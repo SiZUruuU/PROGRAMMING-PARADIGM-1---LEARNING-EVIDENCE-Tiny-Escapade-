@@ -23,7 +23,7 @@ public class TileManager {
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 
         getTileImage();
-        loadMap();
+//        loadMap();
     }
 
     public void getTileImage() {
@@ -88,39 +88,39 @@ public class TileManager {
         }
     }
 
-    public void loadMap() {
-
-        try{
-
-            InputStream is = getClass().getResourceAsStream("/maps/map.txt");
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            int col = 0;
-            int row = 0;
-
-            while(col < gp.maxScreenCol && row < gp.maxScreenRow){
-
-                String line = br.readLine();
-
-                while(col < gp.maxScreenCol){
-
-                    String numbers[] = line.split(" ");
-
-                    int num = Integer.parseInt(numbers[col]);
-
-                    mapTileNum[col][row] = num;
-                    col++;
-                }
-                if(col == gp.maxScreenCol){
-                    col = 0;
-                    row++;
-                }
-                br.close();
-            }
-;
-
-        }catch(Exception e){}
-    }
+//    public void loadMap() {
+//
+//        try{
+//
+//            InputStream is = getClass().getResourceAsStream("/maps/map1.txt");
+//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+//
+//            int col = 0;
+//            int row = 0;
+//
+//            while(col < gp.maxScreenCol && row < gp.maxScreenRow){
+//
+//                String line = br.readLine();
+//
+//                while(col < gp.maxScreenCol){
+//
+//                    String numbers[] = line.split(" ");
+//
+//                    int num = Integer.parseInt(numbers[col]);
+//
+//                    mapTileNum[col][row] = num;
+//                    col++;
+//                }
+//                if(col == gp.maxScreenCol){
+//                    col = 0;
+//                    row++;
+//                }
+//                br.close();
+//            }
+//;
+//
+//        }catch(Exception e){}
+//    }
 
     public void draw(Graphics2D g2){
 
@@ -133,7 +133,9 @@ public class TileManager {
 
             int tileNum = mapTileNum[col][row];
 
-            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+            System.out.print(tileNum);
+
+            g2.drawImage(tile[tileNum].image, x / 2, y / 2, gp.tileSize / 2, gp.tileSize / 2, null);
             col++;
             x += gp.tileSize;
 
