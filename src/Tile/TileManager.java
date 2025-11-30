@@ -23,7 +23,7 @@ public class TileManager {
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 
         getTileImage();
-//        loadMap();
+        loadMap();
     }
 
     public void getTileImage() {
@@ -31,10 +31,10 @@ public class TileManager {
         try{
 
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses2.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses3.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses3.png"));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses2.png"));
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses4.png"));
@@ -88,39 +88,39 @@ public class TileManager {
         }
     }
 
-//    public void loadMap() {
-//
-//        try{
-//
-//            InputStream is = getClass().getResourceAsStream("/maps/map1.txt");
-//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-//
-//            int col = 0;
-//            int row = 0;
-//
-//            while(col < gp.maxScreenCol && row < gp.maxScreenRow){
-//
-//                String line = br.readLine();
-//
-//                while(col < gp.maxScreenCol){
-//
-//                    String numbers[] = line.split(" ");
-//
-//                    int num = Integer.parseInt(numbers[col]);
-//
-//                    mapTileNum[col][row] = num;
-//                    col++;
-//                }
-//                if(col == gp.maxScreenCol){
-//                    col = 0;
-//                    row++;
-//                }
-//                br.close();
-//            }
-//;
-//
-//        }catch(Exception e){}
-//    }
+    public void loadMap() {
+
+        try{
+
+            InputStream is = getClass().getResourceAsStream("/maps/map1.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int col = 0;
+            int row = 0;
+
+            while(col < gp.maxScreenCol && row < gp.maxScreenRow){
+
+                String line = br.readLine();
+
+                while(col < gp.maxScreenCol){
+
+                    String numbers[] = line.split(" ");
+
+                    int num = Integer.parseInt(numbers[col]);
+
+                    mapTileNum[col][row] = num;
+                    col++;
+                }
+                if(col == gp.maxScreenCol){
+                    col = 0;
+                    row++;
+                }
+            }
+            br.close();
+;
+
+        }catch(Exception e){}
+    }
 
     public void draw(Graphics2D g2){
 
