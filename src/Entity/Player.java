@@ -16,12 +16,13 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
-
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
         setDefaultValues();
         getPlayerImage();
+
+        solidArea = new Rectangle(12,16,10, 20);
 
         screenX = gp.screenWidth/2 - (gp.tileSize / 2);
         screenY = gp.screenHeight/2 - (gp.tileSize / 2);
@@ -66,23 +67,44 @@ public class Player extends Entity {
         if(keyH.upPressed){
             direction =  "up";
             isMoving = true;
-            worldY -= normalSpeed;
         }
         if(keyH.downPressed){
             direction =  "down";
             isMoving = true;
-            worldY += normalSpeed;
         }
         if(keyH.leftPressed){
             direction =  "left";
             isMoving = true;
-            worldX -= normalSpeed;
         }
         if(keyH.rightPressed){
             direction = "right";
             isMoving = true;
-            worldX += normalSpeed;
         }
+
+
+        //Check Tile Collision
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+            if(!collisionOn && isMoving){
+
+                switch(direction){
+
+                    case "up":
+                        worldY -= normalSpeed;
+                        break;
+                    case "down":
+                        worldY += normalSpeed;
+                        break;
+                    case "left":
+                        worldX -= normalSpeed;
+                        break;
+                    case "right":
+                        worldX += normalSpeed;
+                        break;
+                }
+
+            }
 
         if (isMoving) {
             spriteCounter++;

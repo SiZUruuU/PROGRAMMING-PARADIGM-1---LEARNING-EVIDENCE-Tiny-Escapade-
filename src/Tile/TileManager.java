@@ -12,14 +12,14 @@ import java.io.InputStreamReader;
 public class TileManager {
 
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNum[][];
+    public Tile[] tile;
+    public int mapTileNum[][];
 
     public TileManager(GamePanel gp){
 
         this.gp = gp;
 
-        tile = new Tile[18];
+        tile = new Tile[19];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -34,7 +34,7 @@ public class TileManager {
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses3.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses2.png"));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses11.png"));
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses4.png"));
@@ -55,7 +55,7 @@ public class TileManager {
             tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses10.png"));
 
             tile[8] = new Tile();
-            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses11.png"));
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses2.png"));
 
             tile[9] = new Tile();
             tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses12.png"));
@@ -83,6 +83,11 @@ public class TileManager {
 
             tile[17] = new Tile();
             tile[17].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
+            tile[17].collision = true;
+
+            tile[18] = new Tile();
+            tile[18].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dark tree.png"));
+            tile[18].collision = true;
 
 
 
@@ -95,7 +100,7 @@ public class TileManager {
 
         try{
 
-            InputStream is = getClass().getResourceAsStream("/maps/map1.txt");
+            InputStream is = getClass().getResourceAsStream("/maps/worldmap1.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -139,7 +144,7 @@ public class TileManager {
             int screenX =  worldX - gp.player.worldX + gp.player.screenX;
             int screenY =  worldY - gp.player.worldY + gp.player.screenY;
 
-            System.out.print(tileNum);
+            System.out.println(tileNum + " ");
 
             if(worldX + gp.tileSize> gp.player.worldX - gp.player.screenX &&
                     worldX - gp.tileSize< gp.player.worldX + gp.player.screenX &&
