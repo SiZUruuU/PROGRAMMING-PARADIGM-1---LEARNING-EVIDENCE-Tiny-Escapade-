@@ -16,6 +16,8 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
+    int hasKey = 0;
+
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
@@ -23,6 +25,8 @@ public class Player extends Entity {
         getPlayerImage();
 
         solidArea = new Rectangle(12,16,10, 32);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
         screenX = gp.screenWidth/2 - (gp.tileSize / 2);
         screenY = gp.screenHeight/2 - (gp.tileSize / 2);
@@ -86,6 +90,11 @@ public class Player extends Entity {
         collisionOn = false;
         gp.cChecker.checkTile(this);
 
+        //Check Object Collision
+        int objIndex = gp.cChecker.checkObject(this,true);
+        pickUpObject(objIndex);
+
+
             if(!collisionOn && isMoving){
 
                 switch(direction){
@@ -120,6 +129,30 @@ public class Player extends Entity {
             spriteNum = 1;
             spriteCounter = 0;
         }
+    }
+
+    public void pickUpObject(int i){
+
+        if(i != 999){
+
+            String objectName = gp.obj[i].name;
+
+            switch(objectName){
+
+                case "Key":
+                    hasKey++;
+                    gp.obj[i] = null;
+                    System.out.print("Key" + hasKey);
+                    break;
+                case "Door":
+                    if(hasKey > 0){
+                        gp.obj[i] = null;
+                        hasKey--;
+                    }
+                    break;
+            }
+        }
+
     }
 
     public void draw(Graphics2D g2){
@@ -173,6 +206,27 @@ public class Player extends Entity {
 
             case "down":
                 image = right2;
+                break;
+
+            case "up":
+                if(spriteNum == 1) {
+                    image = right1;
+                }
+                if(spriteNum == 2){
+                    image = right2;
+                }
+                if(spriteNum == 3){
+                    image = right3;
+                }
+                if(spriteNum == 4){
+                    image = right4;
+                }
+                if(spriteNum == 5){
+                    image = right5;
+                }
+                if(spriteNum == 6){
+                    image = right6;
+                }
                 break;
         }
 
