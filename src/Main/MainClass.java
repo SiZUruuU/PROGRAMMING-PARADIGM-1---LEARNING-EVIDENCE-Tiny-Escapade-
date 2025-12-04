@@ -19,6 +19,7 @@ public class MainClass {
         window.setLocationRelativeTo(null); //Sets window location to center of screen
         window.setVisible(true);  //Allows for window to be visible
 
+        gamePanel.setupGame();
         gamePanel.startGameThread();  //Calls "startGameThreat" method from GamePanel class
     }
 

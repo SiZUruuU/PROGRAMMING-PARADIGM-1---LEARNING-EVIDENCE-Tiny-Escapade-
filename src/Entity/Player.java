@@ -22,7 +22,7 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
 
-        solidArea = new Rectangle(12,16,10, 20);
+        solidArea = new Rectangle(12,16,10, 32);
 
         screenX = gp.screenWidth/2 - (gp.tileSize / 2);
         screenY = gp.screenHeight/2 - (gp.tileSize / 2);
@@ -31,7 +31,7 @@ public class Player extends Entity {
     public void setDefaultValues(){
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
-        normalSpeed = 4;
+        normalSpeed = 2;
         animationSpeed = 7;
         direction = "down";
     }
@@ -177,6 +177,7 @@ public class Player extends Entity {
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
 
     }
 }
