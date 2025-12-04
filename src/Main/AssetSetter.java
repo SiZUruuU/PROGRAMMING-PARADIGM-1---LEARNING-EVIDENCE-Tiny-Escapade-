@@ -2,6 +2,7 @@ package Main;
 
 import Objects.objDoor;
 import Objects.objKey;
+import Objects.objOrb;
 
 public class AssetSetter {
 
@@ -29,6 +30,14 @@ public class AssetSetter {
         gp.obj[3] = new objDoor();
         gp.obj[3].worldX = 25 * gp.tileSize;
         gp.obj[3].worldY = 16 * gp.tileSize;
+
+        gp.obj[4] = new objOrb();
+        gp.obj[4].worldX = 25 * gp.tileSize;
+        gp.obj[4].worldY = 15 * gp.tileSize;
+
+        gp.obj[5] = new objOrb();
+        gp.obj[5].worldX = 26 * gp.tileSize;
+        gp.obj[5].worldY = 15 * gp.tileSize;
 
     }
 }

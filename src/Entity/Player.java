@@ -17,6 +17,7 @@ public class Player extends Entity {
     public final int screenY;
 
     int hasKey = 0;
+    public int orbCount = 0;
 
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -142,13 +143,26 @@ public class Player extends Entity {
                 case "Key":
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.print("Key" + hasKey);
+                    System.out.println("Key: " + hasKey);
                     break;
                 case "Door":
+                    gp.music.stop();
+                    gp.playMusic(0);
                     if(hasKey > 0){
                         gp.obj[i] = null;
                         hasKey--;
                     }
+                    break;
+
+                case "Orb":
+                    orbCount++;
+                    if(orbCount > 1){
+                        gp.music.stop();
+                        gp.playMusic(1);
+                    }
+                    normalSpeed += 2;
+                    System.out.println("Orb: " + orbCount);
+                    gp.obj[i] = null;
                     break;
             }
         }

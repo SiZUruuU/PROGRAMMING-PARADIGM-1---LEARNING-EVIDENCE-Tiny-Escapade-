@@ -144,7 +144,7 @@ public class TileManager {
             int screenX =  worldX - gp.player.worldX + gp.player.screenX;
             int screenY =  worldY - gp.player.worldY + gp.player.screenY;
 
-            System.out.println(tileNum + " ");
+//            System.out.println(tileNum + " ");
 
             if(worldX + gp.tileSize> gp.player.worldX - gp.player.screenX &&
                     worldX - gp.tileSize< gp.player.worldX + gp.player.screenX &&

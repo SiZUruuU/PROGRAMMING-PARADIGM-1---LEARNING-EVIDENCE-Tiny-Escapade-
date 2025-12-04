@@ -8,10 +8,11 @@ import java.awt.image.BufferedImage;
 public class SuperObject {
 
     public BufferedImage image;
+    public BufferedImage image1, image2, image3, image4, image5, image6;
     public String name;
     public boolean collision = false;
     public int worldY, worldX;
-    public Rectangle solidArea = new Rectangle(0,0,30,30);
+    public Rectangle solidArea = new Rectangle(-10,-10,48,30);
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
 
