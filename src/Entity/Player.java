@@ -16,7 +16,7 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
-    int hasKey = 0;
+    public int hasKey = 0;
     public int orbCount = 0;
 
     public Player(GamePanel gp, KeyHandler keyH){
@@ -25,7 +25,7 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
 
-        solidArea = new Rectangle(12,16,10, 32);
+        solidArea = new Rectangle(17,25,13, 25);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -144,26 +144,40 @@ public class Player extends Entity {
                     hasKey++;
                     gp.obj[i] = null;
                     System.out.println("Key: " + hasKey);
+                    gp.ui.showMessage("You got " + hasKey + "x keys.");
                     break;
                 case "Door":
-                    gp.music.stop();
-                    gp.playMusic(0);
+//                    gp.music.stop();
+//                    gp.playMusic(0);
                     if(hasKey > 0){
                         gp.obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("You got " + hasKey + "x keys.");
+                    }
+                    else{
+
+                        gp.ui.showMessage("You dont have enough keys");
                     }
                     break;
 
                 case "Orb":
                     orbCount++;
-                    if(orbCount > 1){
+                    if(orbCount > 3){
                         gp.music.stop();
                         gp.playMusic(1);
+                        gp.ui.showMessage("WE ARE CHARLIE KIRK!!");
                     }
                     normalSpeed += 2;
                     System.out.println("Orb: " + orbCount);
                     gp.obj[i] = null;
                     break;
+
+                case "Chest":
+                    gp.ui.gameFinished = true;
+//                    gp.stopMusic();
+//                    gp.playSE(1);
+                    break;
+
             }
         }
 
@@ -245,6 +259,8 @@ public class Player extends Entity {
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.setColor(Color.red);
+        g2.drawRect(screenX + solidArea.x,screenY + solidArea.y, solidArea.width, solidArea.height);
 
 
     }

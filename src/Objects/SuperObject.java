@@ -12,7 +12,7 @@ public class SuperObject {
     public String name;
     public boolean collision = false;
     public int worldY, worldX;
-    public Rectangle solidArea = new Rectangle(-10,-10,48,30);
+    public Rectangle solidArea = new Rectangle(10,10,48,30);
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
 

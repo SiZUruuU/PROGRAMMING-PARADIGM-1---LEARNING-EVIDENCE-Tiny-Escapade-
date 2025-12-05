@@ -33,11 +33,12 @@ public class GamePanel extends JPanel implements Runnable {
     public Sound se = new Sound();
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
+    public UI ui = new UI(this);
     Thread gameThread;
 
     //ENTITY AND OBJECT
     public Player player = new Player(this,keyH);
-    public SuperObject obj[] = new SuperObject[10];
+    public SuperObject obj[] = new SuperObject[20];
 
 
     //Default PLAYER position
@@ -124,6 +125,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         //PLAYER
         player.draw(g2);
+
+        //UI
+        ui.draw(g2);
         g2.dispose();
     }
 
