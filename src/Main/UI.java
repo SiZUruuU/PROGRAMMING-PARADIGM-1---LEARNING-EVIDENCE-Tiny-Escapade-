@@ -48,7 +48,7 @@ public class UI {
             text = "YOU WIN";
             textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
-            y = gp.screenHeight / 2 - (gp.tileSize * 3);
+            y = gp.screenHeight / 2 - (gp.tileSize * 1);
             g2.drawString(text, x, y);
 
             text = "Time is: " + dFormat.format(playTime) + "!";
