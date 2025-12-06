@@ -1,6 +1,7 @@
 package Tile;
 
 import Main.GamePanel;
+import Main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -28,72 +29,42 @@ public class TileManager {
 
     public void getTileImage() {
 
+            setUp(0, "grasses3", false);
+            setUp(1, "grasses11", false);
+            setUp(2, "grasses4", false);
+            setUp(3, "grasses5", false);
+            setUp(4, "grasses6", false);
+            setUp(5, "grasses7", false);
+            setUp(6, "grasses9", false);
+            setUp(7, "grasses10", false);
+            setUp(8, "grasses2", false);
+            setUp(9, "grasses12", false);
+            setUp(10, "grasses13", false);
+            setUp(11, "grasses14", false);
+            setUp(12, "grasses15", false);
+            setUp(13, "grasses19", false);
+            setUp(14, "grasses20", false);
+            setUp(15, "grasses21", false);
+            setUp(16, "grasses22", false);
+            setUp(17, "tree", true);
+            setUp(18, "dark tree", true);
+
+    }
+    public void setUp(int index, String imageName, boolean collision){
+
+        UtilityTool uTool = new UtilityTool();
+
         try{
+            tile[index] = new Tile();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imageName + ".png"));
+            tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = collision;
 
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses3.png"));
-
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses11.png"));
-
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses4.png"));
-
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses5.png"));
-
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses6.png"));
-
-            tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses7.png"));
-
-            tile[6] = new Tile();
-            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses9.png"));
-
-            tile[7] = new Tile();
-            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses10.png"));
-
-            tile[8] = new Tile();
-            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses2.png"));
-
-            tile[9] = new Tile();
-            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses12.png"));
-
-            tile[10] = new Tile();
-            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses13.png"));
-
-            tile[11] = new Tile();
-            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses14.png"));
-
-            tile[12] = new Tile();
-            tile[12].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses15.png"));
-
-            tile[13] = new Tile();
-            tile[13].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses19.png"));
-
-            tile[14] = new Tile();
-            tile[14].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses20.png"));
-
-            tile[15] = new Tile();
-            tile[15].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses21.png"));
-
-            tile[16] = new Tile();
-            tile[16].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grasses22.png"));
-
-            tile[17] = new Tile();
-            tile[17].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
-            tile[17].collision = true;
-
-            tile[18] = new Tile();
-            tile[18].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dark tree.png"));
-            tile[18].collision = true;
-
-
-
-        }catch(IOException e) {
+        }catch(IOException e){
             e.printStackTrace();
+
         }
+
     }
 
     public void loadMap() {
@@ -150,7 +121,7 @@ public class TileManager {
                     worldX - gp.tileSize< gp.player.worldX + gp.player.screenX &&
                     worldY + gp.tileSize> gp.player.worldY - gp.player.screenY &&
                     worldY - gp.tileSize< gp.player.worldY + gp.player.screenY) {
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                g2.drawImage(tile[tileNum].image, screenX, screenY, null);
             }
 
             if(tile[tileNum].collision) {

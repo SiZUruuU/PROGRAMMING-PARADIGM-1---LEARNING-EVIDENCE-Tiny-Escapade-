@@ -2,6 +2,7 @@ package Entity;
 
 import Main.GamePanel;
 import Main.KeyHandler;
+import Main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -16,8 +17,8 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
-    public int hasKey = 0;
-    public int orbCount = 0;
+//    public int hasKey = 0;
+//    public int orbCount = 0;
 
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -43,25 +44,36 @@ public class Player extends Entity {
 
     public void getPlayerImage(){
 
-        try {
+            left1 = setUp("left0");
+            left2 = setUp("left1");
+            left3 = setUp("left2");
+            left4 = setUp("left3");
+            left5 = setUp("left4");
+            left6 = setUp("left5");
 
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/left0.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
-            left3 = ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
-            left4 = ImageIO.read(getClass().getResourceAsStream("/player/left3.png"));
-            left5 = ImageIO.read(getClass().getResourceAsStream("/player/left4.png"));
-            left6 = ImageIO.read(getClass().getResourceAsStream("/player/left5.png"));
+            right1 = setUp("right0");
+            right2 = setUp("right1");
+            right3 = setUp("right2");
+            right4 = setUp("right3");
+            right5 = setUp("right4");
+            right6 = setUp("right5");
 
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/right0.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
-            right3 = ImageIO.read(getClass().getResourceAsStream("/player/right2.png"));
-            right4 = ImageIO.read(getClass().getResourceAsStream("/player/right3.png"));
-            right5 = ImageIO.read(getClass().getResourceAsStream("/player/right4.png"));
-            right6 = ImageIO.read(getClass().getResourceAsStream("/player/right5.png"));
+    }
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public BufferedImage setUp(String imageName) {
+
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+
+        try{
+
+            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+
+        }catch(IOException e){
+            e.printStackTrace();
         }
+        return image;
     }
 
 
@@ -116,6 +128,7 @@ public class Player extends Entity {
 
             }
 
+
         if (isMoving) {
             spriteCounter++;
             int animationSpeed = 5;
@@ -136,49 +149,6 @@ public class Player extends Entity {
 
         if(i != 999){
 
-            String objectName = gp.obj[i].name;
-
-            switch(objectName){
-
-                case "Key":
-                    hasKey++;
-                    gp.obj[i] = null;
-                    System.out.println("Key: " + hasKey);
-                    gp.ui.showMessage("You got " + hasKey + "x keys.");
-                    break;
-                case "Door":
-//                    gp.music.stop();
-//                    gp.playMusic(0);
-                    if(hasKey > 0){
-                        gp.obj[i] = null;
-                        hasKey--;
-                        gp.ui.showMessage("You got " + hasKey + "x keys.");
-                    }
-                    else{
-
-                        gp.ui.showMessage("You dont have enough keys");
-                    }
-                    break;
-
-                case "Orb":
-                    orbCount++;
-                    if(orbCount > 3){
-                        gp.music.stop();
-                        gp.playMusic(1);
-                        gp.ui.showMessage("WE ARE CHARLIE KIRK!!");
-                    }
-                    normalSpeed += 2;
-                    System.out.println("Orb: " + orbCount);
-                    gp.obj[i] = null;
-                    break;
-
-                case "Chest":
-                    gp.ui.gameFinished = true;
-//                    gp.stopMusic();
-//                    gp.playSE(1);
-                    break;
-
-            }
         }
 
     }
@@ -258,7 +228,7 @@ public class Player extends Entity {
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize ,null);
         g2.setColor(Color.red);
         g2.drawRect(screenX + solidArea.x,screenY + solidArea.y, solidArea.width, solidArea.height);
 
