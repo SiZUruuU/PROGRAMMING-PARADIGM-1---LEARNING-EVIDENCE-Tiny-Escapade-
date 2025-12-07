@@ -6,7 +6,7 @@ public class MainClass {
 
     public static void main(String [] args) {
 
-        JFrame window = new JFrame(); //Creates new variable for JFrame
+        JFrame window = new JFrame(); //Creaptes new variable for JFrame
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Allows for process to close on exit
         window.setResizable(false);  //Sets window to unresizable
         window.setTitle("2D Game");  //Sets Game Title

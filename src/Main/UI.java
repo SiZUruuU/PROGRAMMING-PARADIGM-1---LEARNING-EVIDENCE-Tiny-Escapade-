@@ -1,16 +1,15 @@
 package Main;
 
-import Objects.objKey;
-
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 
 public class UI {
 
     GamePanel gp;
     Graphics2D g2;
-    Font courier_new_40, impact_80B;
+    Font maruMonica, PurisaB;
 //    BufferedImage keyImage;
     public boolean messageOn = false;
     public String  message = "";
@@ -23,10 +22,18 @@ public class UI {
     public UI(GamePanel gp) {
         this.gp = gp;
 
-        courier_new_40 = new Font("Courier New", Font.BOLD, 20);
-        impact_80B = new Font("Impact", Font.BOLD, 80);
-//        objKey key = new objKey(gp);
-//        keyImage = key.image;
+
+        try {
+            InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
+            maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+            is = getClass().getResourceAsStream("/font/Purisa Bold.ttf");
+            PurisaB = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void showMessage(String text){
@@ -39,7 +46,7 @@ public class UI {
 
         this.g2 =  g2;
 
-        g2.setFont(courier_new_40);
+        g2.setFont(maruMonica);
         g2.setColor(Color.white);
 
         //PLAY STATE

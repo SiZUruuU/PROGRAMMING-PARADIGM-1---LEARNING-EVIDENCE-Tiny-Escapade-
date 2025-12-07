@@ -9,6 +9,9 @@ public class Prisoner1_NPC extends Entity{
     public Prisoner1_NPC(GamePanel gp){
         super(gp);
 
+        int plus = 0;
+        plus++;
+
         direction = "down";
         normalSpeed = 1;
 
