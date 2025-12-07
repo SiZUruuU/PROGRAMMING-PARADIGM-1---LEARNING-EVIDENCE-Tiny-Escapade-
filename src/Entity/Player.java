@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class Player extends Entity {
 
-    GamePanel gp;
     KeyHandler keyH;
 
     public final int screenX;
@@ -21,7 +20,8 @@ public class Player extends Entity {
 //    public int orbCount = 0;
 
     public Player(GamePanel gp, KeyHandler keyH){
-        this.gp = gp;
+
+        super(gp);
         this.keyH = keyH;
         setDefaultValues();
         getPlayerImage();
@@ -44,37 +44,22 @@ public class Player extends Entity {
 
     public void getPlayerImage(){
 
-            left1 = setUp("left0");
-            left2 = setUp("left1");
-            left3 = setUp("left2");
-            left4 = setUp("left3");
-            left5 = setUp("left4");
-            left6 = setUp("left5");
+            left1 = setUp("/player/left0");
+            left2 = setUp("/player/left1");
+            left3 = setUp("/player/left2");
+            left4 = setUp("/player/left3");
+            left5 = setUp("/player/left4");
+            left6 = setUp("/player/left5");
 
-            right1 = setUp("right0");
-            right2 = setUp("right1");
-            right3 = setUp("right2");
-            right4 = setUp("right3");
-            right5 = setUp("right4");
-            right6 = setUp("right5");
+            right1 = setUp("/player/right0");
+            right2 = setUp("/player/right1");
+            right3 = setUp("/player/right2");
+            right4 = setUp("/player/right3");
+            right5 = setUp("/player/right4");
+            right6 = setUp("/player/right5");
 
     }
 
-    public BufferedImage setUp(String imageName) {
-
-        UtilityTool uTool = new UtilityTool();
-        BufferedImage image = null;
-
-        try{
-
-            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
-            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        return image;
-    }
 
 
     public void update(){
@@ -106,6 +91,10 @@ public class Player extends Entity {
         //Check Object Collision
         int objIndex = gp.cChecker.checkObject(this,true);
         pickUpObject(objIndex);
+
+        //Check NPC collision
+        int npcIndex = gp.cChecker.checkEntity(this,gp.npc);
+        interactNPC(npcIndex);
 
 
             if(!collisionOn && isMoving){
@@ -150,7 +139,18 @@ public class Player extends Entity {
         if(i != 999){
 
         }
+    }
 
+    public void interactNPC(int i){
+
+        if(i != 999){
+
+            if(gp.keyH.eKeyPressed) {
+                gp.gameState = gp.dialogueState;
+                gp.npc[i].speak();
+            }
+        }
+        gp.keyH.eKeyPressed = false;
     }
 
     public void draw(Graphics2D g2){
