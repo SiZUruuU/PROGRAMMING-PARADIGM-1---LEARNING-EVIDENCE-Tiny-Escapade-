@@ -40,7 +40,6 @@ public class Prisoner1_NPC extends Entity{
 
     public void setDialogue(){
 
-
         dialogues[0] = "I have been trapped in here for 20 years...";
         dialogues[1] = "I remember your face...\nyes I know it well...\nThe resemblance is very similar to HIM";
         dialogues[2] = "I feel death behind me...";

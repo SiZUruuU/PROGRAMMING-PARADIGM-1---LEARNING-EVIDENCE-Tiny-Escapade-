@@ -9,7 +9,7 @@ public class MainClass {
         JFrame window = new JFrame(); //Creaptes new variable for JFrame
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Allows for process to close on exit
         window.setResizable(false);  //Sets window to unresizable
-        window.setTitle("2D Game");  //Sets Game Title
+        window.setTitle("The Origin of the First Supreme King of Cahtlacun");  //Sets Game Title
 
         GamePanel gamePanel = new GamePanel();  //Creates new variable for GamePanel class
         window.add(gamePanel);  //Allows for GamePanel class to be visible in JFrame

@@ -40,6 +40,10 @@ public class Player extends Entity {
         normalSpeed = 2;
         animationSpeed = 7;
         direction = "down";
+
+        //PLAYER STATUS
+        maxLife = 5;
+        life = maxLife;
     }
 
     public void getPlayerImage(){
@@ -141,16 +145,21 @@ public class Player extends Entity {
         }
     }
 
-    public void interactNPC(int i){
+    public void interactNPC(int i) {
 
-        if(i != 999){
 
-            if(gp.keyH.eKeyPressed) {
+        if (i != 999) {
+
+            if (gp.keyH.eKeyPressed) {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
+                if (life > 1) {
+                    life--;
+                    System.out.print(life);
+                }
             }
+            gp.keyH.eKeyPressed = false;
         }
-        gp.keyH.eKeyPressed = false;
     }
 
     public void draw(Graphics2D g2){
