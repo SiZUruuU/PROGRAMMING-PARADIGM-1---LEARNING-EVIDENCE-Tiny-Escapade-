@@ -4,6 +4,7 @@ import Entity.Entity;
 import Entity.Player;
 import Objects.SuperObject;
 import Tile.TileManager;
+import jdk.jfr.Event;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public UI ui = new UI(this);
+    public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
 
     //ENTITY AND OBJECT

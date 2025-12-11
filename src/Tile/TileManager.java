@@ -49,6 +49,18 @@ public class TileManager {
             setUp(17, "tree", true);
             setUp(18, "dark tree", true);
 
+//              setUp(1, "14", false);
+//              setUp(2, "2", false);
+//              setUp(3, "3", false);
+//              setUp(4, "4", true);
+//              setUp(5, "5", true);
+//              setUp(6, "14", false);
+//              setUp(7, "2", false);
+//              setUp(8, "3", false);
+//              setUp(9, "4", true);
+//              setUp(10, "5", true);
+
+
 
     }
     public void setUp(int index, String imageName, boolean collision){
