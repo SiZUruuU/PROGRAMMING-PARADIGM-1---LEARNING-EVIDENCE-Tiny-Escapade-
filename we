@@ -1,0 +1,18 @@
+[33m4b19dc9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m new map tileset
+[33m8206d91[m pre map change and midway into event handler
+[33mf639e84[m[33m ([m[1;31morigin/main[m[33m)[m added title screen and player life
+[33m2719f54[m custom fonts added
+[33m0d31bac[m dialogue finished
+[33m1918ca0[m npc finished and halfway with dialogue
+[33m51d60e6[m game state implemented (pause system) and housekeeping finished
+[33m90aea9c[m add on
+[33m917556a[m completed first half (ui and perfect collision)
+[33me9f43e5[m music and se added
+[33mffd93f1[m object interaction
+[33ma69b6ad[m object class finished
+[33meb296ac[m collision created (imperfect)
+[33ma2a0a7b[m world map progress
+[33m4661f01[m fixed load map
+[33m6401c74[m removed tile map
+[33m5983810[m yes
+[33m7bb550a[m charlie kirk

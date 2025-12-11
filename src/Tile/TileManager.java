@@ -49,92 +49,92 @@ public class TileManager {
 //            setUp(17, "tree", true);
 //            setUp(18, "dark tree", true);
 
-        setUp(0, "80", false);
-        setUp(1, "1", true);
-        setUp(2, "2", true);
-        setUp(3, "3", true);
-        setUp(4, "4", true);
-        setUp(5, "5", true);
-        setUp(6, "6", true);
-        setUp(7, "7", true);
-        setUp(8, "8", true);
-        setUp(9, "9", true);
-        setUp(10, "10", true);
-        setUp(11, "11", true);
-        setUp(12, "12", true);
-        setUp(13, "13", true);
-        setUp(14, "14", true);
-        setUp(15, "15", true);
-        setUp(16, "16", true);
-        setUp(17, "17", true);
-        setUp(18, "18", true);
-        setUp(19, "19", true);
-        setUp(20, "20", true);
-        setUp(21, "21", true);
-        setUp(22, "22", false);
-        setUp(23, "23", false);
-        setUp(24, "24", true);
-        setUp(25, "25", true);
-        setUp(26, "26", false);
-        setUp(27, "27", false);
-        setUp(28, "28", true);
-        setUp(29, "29", true);
-        setUp(30, "30", true);
-        setUp(31, "31", true);
-        setUp(32, "32", false);
-        setUp(33, "33", false);
-        setUp(34, "34", true);
-        setUp(35, "35", true);
-        setUp(36, "36", false);
-        setUp(37, "37", false);
-        setUp(38, "38", true);
-        setUp(39, "39", true);
-        setUp(40, "40", true);
-        setUp(41, "41", true);
-        setUp(42, "42", true);
-        setUp(43, "43", true);
-        setUp(44, "44", true);
-        setUp(45, "45", true);
-        setUp(46, "46", true);
-        setUp(47, "47", true);
-        setUp(48, "48", true);
-        setUp(49, "49", true);
-        setUp(50, "50", true);
-        setUp(51, "51", true);
-        setUp(52, "52", true);
-        setUp(53, "53", true);
-        setUp(54, "54", true);
-        setUp(55, "55", true);
-        setUp(56, "56", true);
-        setUp(57, "57", true);
-        setUp(58, "58", true);
-        setUp(59, "59", true);
-        setUp(60, "60", true);
-        setUp(61, "61", false);
-        setUp(62, "62", false);
-        setUp(63, "63", false);
-        setUp(64, "64", false);
-        setUp(65, "65", true);
-        setUp(66, "66", false);
-        setUp(67, "67", false);
-        setUp(68, "68", true);
-        setUp(69, "69", true);
-        setUp(70, "70", false);
-        setUp(71, "71", false);
-        setUp(72, "72", false);
-        setUp(73, "73", false);
-        setUp(74, "74", false);
-        setUp(75, "75", true);
-        setUp(76, "76", true);
-        setUp(77, "77", true);
-        setUp(78, "78", true);
-        setUp(79, "79", true);
+        setUp(0, "80", false, 0, 0, 16, 16);
+        setUp(1, "1", true,0, 0, 48, 48);
+        setUp(2, "2", true,0, 0, 48, 48);
+        setUp(3, "3", true,0, 0, 48, 48);
+        setUp(4, "4", true,0, 0, 48, 48);
+        setUp(5, "5", true,0, 0, 16, 16);
+        setUp(6, "6", true,0, 0, 16, 16);
+        setUp(7, "7", true,0, 0, 16, 16);
+        setUp(8, "8", true,0, 0, 16, 16);
+        setUp(9, "9", true,0, 0, 16, 16);
+        setUp(10, "10", true,0, 0, 16, 16);
+        setUp(11, "11", true,0, 0, 48, 48);
+        setUp(12, "12", true,0, 0, 48, 48);
+        setUp(13, "13", true,0, 0, 48, 48);
+        setUp(14, "14", true,0, 0, 16, 16);
+        setUp(15, "15", true,0, 0, 16, 16);
+        setUp(16, "16", true,0, 0, 16, 16);
+        setUp(17, "17", true,0, 0, 16, 16);
+        setUp(18, "18", true,0, 0, 16, 16);
+        setUp(19, "19", true,0, 0, 16, 16);
+        setUp(20, "20", true,0, 0, 16, 16);
+        setUp(21, "21", true,0, 0, 16, 48);
+        setUp(22, "22", false,0, 0, 16, 16);
+        setUp(23, "23", false,0, 0, 16, 16);
+        setUp(24, "24", true,0, 0, 16, 16);
+        setUp(25, "25", true,0, 0, 16, 16);
+        setUp(26, "26", false,0, 0, 16, 16);
+        setUp(27, "27", false,0, 0, 16, 16);
+        setUp(28, "28", true,0, 0, 16, 16);
+        setUp(29, "29", true,0, 0, 16, 16);
+        setUp(30, "30", true,0, 0, 16, 16);
+        setUp(31, "31", true,0, 0, 16, 16);
+        setUp(32, "32", false,0, 0, 16, 16);
+        setUp(33, "33", false,0, 0, 16, 16);
+        setUp(34, "34", true,0, 0, 16, 16);
+        setUp(35, "35", true,0, 0, 16, 16);
+        setUp(36, "36", false,0, 0, 16, 16);
+        setUp(37, "37", false,0, 0, 16, 16);
+        setUp(38, "38", true,0, 0, 16, 16);
+        setUp(39, "39", true,0, 0, 16, 16);
+        setUp(40, "40", true,0, 0, 16, 16);
+        setUp(41, "41", true,0, 0, 16, 16);
+        setUp(42, "42", true,0, 0, 16, 16);
+        setUp(43, "43", true,0, 0, 16, 16);
+        setUp(44, "44", true,0, 0, 16, 16);
+        setUp(45, "45", true,0, 0, 16, 16);
+        setUp(46, "46", true,0, 0, 16, 16);
+        setUp(47, "47", true,0, 0, 16, 16);
+        setUp(48, "48", true,0, 0, 16, 16);
+        setUp(49, "49", true,0, 0, 16, 16);
+        setUp(50, "50", true,0, 0, 16, 16);
+        setUp(51, "51", true,0, 0, 16, 16);
+        setUp(52, "52", true,0, 0, 16, 16);
+        setUp(53, "53", true,0, 0, 16, 16);
+        setUp(54, "54", true,0, 0, 16, 16);
+        setUp(55, "55", true,0, 0, 16, 16);
+        setUp(56, "56", true,0, 0, 16, 16);
+        setUp(57, "57", true,0, 0, 16, 16);
+        setUp(58, "58", true,0, 0, 16, 16);
+        setUp(59, "59", true,0, 0, 16, 16);
+        setUp(60, "60", true,0, 0, 16, 16);
+        setUp(61, "61", false,0, 0, 16, 16);
+        setUp(62, "62", false,0, 0, 16, 16);
+        setUp(63, "63", false,0, 0, 16, 16);
+        setUp(64, "64", false,0, 0, 16, 16);
+        setUp(65, "65", true,0, 0, 16, 16);
+        setUp(66, "66", false,0, 0, 16, 16);
+        setUp(67, "67", false,0, 0, 16, 16);
+        setUp(68, "68", true,0, 0, 16, 16);
+        setUp(69, "69", true,0, 0, 16, 16);
+        setUp(70, "70", false,0, 0, 16, 16);
+        setUp(71, "71", false,0, 0, 16, 16);
+        setUp(72, "72", false,0, 0, 16, 16);
+        setUp(73, "73", false,0, 0, 16, 16);
+        setUp(74, "74", false,0, 0, 16, 16);
+        setUp(75, "75", true,0, 0, 16, 16);
+        setUp(76, "76", true,0, 0, 16, 16);
+        setUp(77, "77", true,0, 0, 16, 16);
+        setUp(78, "78", true,0, 0, 16, 16);
+        setUp(79, "79", true,0, 0, 16, 16);
 
 
 
 
     }
-    public void setUp(int index, String imageName, boolean collision){
+    public void setUp(int index, String imageName, boolean collision, int x, int y, int width, int height){
 
         UtilityTool uTool = new UtilityTool();
 
@@ -143,6 +143,15 @@ public class TileManager {
             tile[index].image = ImageIO.read(getClass().getResourceAsStream("/newtiles/" + imageName + ".png"));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
+
+            tile[index].solidArea.x = x;
+            tile[index].solidArea.y = y;
+            tile[index].solidArea.width = width;
+            tile[index].solidArea.height = height;
+
+            // Save default values for resetting later (important for doors/interactions)
+            tile[index].solidAreaDefaultX = x;
+            tile[index].solidAreaDefaultY = y;
 
         }catch(IOException e){
             e.printStackTrace();
@@ -210,7 +219,10 @@ public class TileManager {
 
             if(tile[tileNum].collision) {
                 g2.setColor(Color.RED);
-                g2.drawRect(screenX, screenY, gp.tileSize, gp.tileSize);
+                g2.drawRect(screenX + tile[tileNum].solidArea.x,
+                        screenY + tile[tileNum].solidArea.y,
+                        tile[tileNum].solidArea.width,
+                        tile[tileNum].solidArea.height);
             }
 
             worldCol++;
