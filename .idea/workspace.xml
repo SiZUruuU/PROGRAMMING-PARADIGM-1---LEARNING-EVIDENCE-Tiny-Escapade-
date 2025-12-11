@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8c2caa29-d47c-488f-87cd-96e3336cec3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/worldmap1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/worldmap1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +47,7 @@
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Josh Ihalas/Documents/IntelliJ CE Projects/Days Break/res/monkey",
+    "last_opened_file_path": "C:/Users/Josh Ihalas/Documents/IntelliJ CE Projects/Days Break/res/maps",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -60,6 +57,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\res\maps" />
       <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\res\monkey" />
     </key>
   </component>

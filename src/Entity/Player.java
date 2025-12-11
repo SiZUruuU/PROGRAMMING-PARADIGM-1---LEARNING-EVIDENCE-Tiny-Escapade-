@@ -26,7 +26,7 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
 
-        solidArea = new Rectangle(17,30,13, 13);
+        solidArea = new Rectangle(20,30,1, 13);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -35,8 +35,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues(){
-        worldX = gp.tileSize * 48;
-        worldY = gp.tileSize * 48;
+        worldX = gp.tileSize * 47;
+        worldY = gp.tileSize * 46;
         normalSpeed = 2;
         animationSpeed = 7;
         direction = "down";
