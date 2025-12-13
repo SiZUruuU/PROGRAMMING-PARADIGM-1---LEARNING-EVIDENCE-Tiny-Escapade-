@@ -7,11 +7,10 @@ public class EventHandler {
     GamePanel gp;
     Rectangle eventRect;
     int eventRectDefaultX, eventRectDefaultY;
-
-    // --- CHANGE 1: ADD THESE VARIABLES ---
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
-    // -------------------------------------
+    int encounterCount = 0;
+    boolean trigger = false;
 
     public EventHandler(GamePanel gp){
         this.gp = gp;
@@ -19,8 +18,8 @@ public class EventHandler {
         eventRect = new Rectangle();
         eventRect.x = 23;
         eventRect.y = 23;
-        eventRect.width = 2;
-        eventRect.height = 2;
+        eventRect.width = 10;
+        eventRect.height = 10;
         eventRectDefaultX = eventRect.x;
         eventRectDefaultY = eventRect.y;
     }
@@ -33,13 +32,14 @@ public class EventHandler {
         int yDistance = Math.abs(gp.player.worldY - previousEventY);
         int distance = Math.max(xDistance, yDistance);
 
-        if(distance > 20) {
+        if(distance > 30) {
             canTouchEvent = true;
         }
 
         if(canTouchEvent) {
             // We pass the col/row (20, 23) into damagePit so we can remember location
-            if(hit(20, 23, "up")){ damagePit(20, 23, gp.dialogueState); }
+            if(hit(45, 44, "any")){ damagePit(20, 23, gp.dialogueState); }
+            if(hit(41, 45, "any")){ damagePit(20, 23, gp.dialogueState); }
         }
 
     }
@@ -76,9 +76,40 @@ public class EventHandler {
 
         gp.gameState = gameState;
         gp.ui.currentDialogue = "Something scratches on your arm";
-        gp.player.life -= 1;
+        gp.playSE(3);
+
+        if(encounterCount == 3){
+            gp.ui.currentDialogue = "The thing burrows into your skin but you managed to swat it away";
+            System.out.println("EVENT TRIGGERED");
+            gp.player.life -= 1;
+            encounterCount = 0;
+        }
+        else{
+            encounterCount++;
+            System.out.println("Encounter Count: " + encounterCount);
+        }
+
+
+
 
         // Disable touch so it doesn't happen again immediately
         canTouchEvent = false;
+    }
+    public void draw(Graphics2D g2) {
+
+        g2.setColor(Color.MAGENTA);
+
+        int eventCol = 41;
+        int eventRow = 45;
+
+        // Calculate the position relative to the screen (same math as tiles)
+        int worldX = eventCol * gp.tileSize + eventRectDefaultX;
+        int worldY = eventRow * gp.tileSize + eventRectDefaultY;
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+
+        // Draw the rectangle
+        // We use eventRect.width/height to see the exact trigger size
+        g2.drawRect(screenX, screenY, eventRect.width, eventRect.height);
     }
 }

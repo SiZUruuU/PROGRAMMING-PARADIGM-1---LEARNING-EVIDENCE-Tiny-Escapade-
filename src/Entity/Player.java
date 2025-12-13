@@ -26,7 +26,7 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
 
-        solidArea = new Rectangle(14,30,13, 15);
+        solidArea = new Rectangle(14,30,20, 15);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -36,8 +36,9 @@ public class Player extends Entity {
 
     public void setDefaultValues(){
         worldX = gp.tileSize * 47;
-        worldY = gp.tileSize * 46;
+        worldY = gp.tileSize * 45;
         normalSpeed = 2;
+        sprintSpeed = 6;
         animationSpeed = 7;
         direction = "down";
 
@@ -48,19 +49,34 @@ public class Player extends Entity {
 
     public void getPlayerImage(){
 
-            left1 = setUp("/player/left0");
-            left2 = setUp("/player/left1");
-            left3 = setUp("/player/left2");
-            left4 = setUp("/player/left3");
-            left5 = setUp("/player/left4");
-            left6 = setUp("/player/left5");
+        left1 = setUp("/player/left0");
+        left2 = setUp("/player/left1");
+        left3 = setUp("/player/left2");
+        left4 = setUp("/player/left3");
+        left5 = setUp("/player/left4");
+        left6 = setUp("/player/left5");
 
-            right1 = setUp("/player/right0");
-            right2 = setUp("/player/right1");
-            right3 = setUp("/player/right2");
-            right4 = setUp("/player/right3");
-            right5 = setUp("/player/right4");
-            right6 = setUp("/player/right5");
+        right1 = setUp("/player/right0");
+        right2 = setUp("/player/right1");
+        right3 = setUp("/player/right2");
+        right4 = setUp("/player/right3");
+        right5 = setUp("/player/right4");
+        right6 = setUp("/player/right5");
+
+        leftrun1 = setUp("/player/leftrun0");
+        leftrun2 = setUp("/player/leftrun1");
+        leftrun3 = setUp("/player/leftrun2");
+        leftrun4 = setUp("/player/leftrun3");
+        leftrun5 = setUp("/player/leftrun4");
+        leftrun6 = setUp("/player/leftrun5");
+
+        rightrun1 = setUp("/player/rightrun0");
+        rightrun2 = setUp("/player/rightrun1");
+        rightrun3 = setUp("/player/rightrun2");
+        rightrun4 = setUp("/player/rightrun3");
+        rightrun5 = setUp("/player/rightrun4");
+        rightrun6 = setUp("/player/rightrun5");
+
 
     }
 
@@ -103,8 +119,43 @@ public class Player extends Entity {
         //Check Event
         gp.eHandler.CheckEvent();
 
+        if (keyH.shiftPressed && isMoving && stamina > 0) {
+            sprint = true;
+            normalSpeed = sprintSpeed;
+            stamina--;
 
-            if(!collisionOn && isMoving){
+            if(stamina <= 0){
+                sprint = false;
+                if(sprintSpeed > 2){
+                    sprintSpeed = 2;
+                    stamina = 0;
+                }
+            }
+        } else {
+
+            sprint = false;
+            normalSpeed = 2;
+
+            if(!keyH.shiftPressed && stamina < 100){
+                staminaRegenCount++;
+            }
+            if(staminaRegenCount > 120) {
+                stamina++;
+                if(keyH.shiftPressed){
+                    staminaRegenCount = 0;
+                }
+                if(stamina == 100){
+                    staminaRegenCount = 0;
+                }
+            }
+            if(stamina > 0 && sprintSpeed < 6){
+                sprintSpeed++;
+            }
+        }
+
+
+
+        if(!collisionOn && isMoving){
 
                 switch(direction){
 
@@ -170,75 +221,151 @@ public class Player extends Entity {
 //        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
 
         BufferedImage image = null;
-        switch (direction) {
-            case "left":
-                if(spriteNum == 1) {
-                    image = left1;
-                }
-                if(spriteNum == 2){
-                    image = left2;
-                }
-                if(spriteNum == 3){
-                    image = left3;
-                }
-                if(spriteNum == 4){
-                    image = left4;
-                }
-                if(spriteNum == 5){
-                    image = left5;
-                }
-                if(spriteNum == 6){
-                    image = left6;
-                }
-                break;
+        if(!sprint) {
+            switch (direction) {
+                case "left":
+                    if (spriteNum == 1) {
+                        image = left1;
+                    }
+                    if (spriteNum == 2) {
+                        image = left2;
+                    }
+                    if (spriteNum == 3) {
+                        image = left3;
+                    }
+                    if (spriteNum == 4) {
+                        image = left4;
+                    }
+                    if (spriteNum == 5) {
+                        image = left5;
+                    }
+                    if (spriteNum == 6) {
+                        image = left6;
+                    }
+                    break;
 
 
-            case "right":
-                if(spriteNum == 1) {
-                    image = right1;
-                }
-                if(spriteNum == 2){
+                case "right":
+                    if (spriteNum == 1) {
+                        image = right1;
+                    }
+                    if (spriteNum == 2) {
+                        image = right2;
+                    }
+                    if (spriteNum == 3) {
+                        image = right3;
+                    }
+                    if (spriteNum == 4) {
+                        image = right4;
+                    }
+                    if (spriteNum == 5) {
+                        image = right5;
+                    }
+                    if (spriteNum == 6) {
+                        image = right6;
+                    }
+                    break;
+
+                case "down":
                     image = right2;
-                }
-                if(spriteNum == 3){
-                    image = right3;
-                }
-                if(spriteNum == 4){
-                    image = right4;
-                }
-                if(spriteNum == 5){
-                    image = right5;
-                }
-                if(spriteNum == 6){
-                    image = right6;
-                }
-                break;
+                    break;
 
-            case "down":
-                image = right2;
-                break;
-
-            case "up":
-                if(spriteNum == 1) {
-                    image = right1;
-                }
-                if(spriteNum == 2){
-                    image = right2;
-                }
-                if(spriteNum == 3){
-                    image = right3;
-                }
-                if(spriteNum == 4){
-                    image = right4;
-                }
-                if(spriteNum == 5){
-                    image = right5;
-                }
-                if(spriteNum == 6){
-                    image = right6;
-                }
-                break;
+                case "up":
+                    if (spriteNum == 1) {
+                        image = right1;
+                    }
+                    if (spriteNum == 2) {
+                        image = right2;
+                    }
+                    if (spriteNum == 3) {
+                        image = right3;
+                    }
+                    if (spriteNum == 4) {
+                        image = right4;
+                    }
+                    if (spriteNum == 5) {
+                        image = right5;
+                    }
+                    if (spriteNum == 6) {
+                        image = right6;
+                    }
+                    break;
+            }
         }
+        if(sprint){
+
+            switch (direction) {
+                case "left":
+                    if (spriteNum == 1) {
+                        image = leftrun1;
+                    }
+                    if (spriteNum == 2) {
+                        image = leftrun2;
+                    }
+                    if (spriteNum == 3) {
+                        image = leftrun3;
+                    }
+                    if (spriteNum == 4) {
+                        image = leftrun4;
+                    }
+                    if (spriteNum == 5) {
+                        image = leftrun5;
+                    }
+                    if (spriteNum == 6) {
+                        image = leftrun6;
+                    }
+                    break;
+
+
+                case "right":
+                    if (spriteNum == 1) {
+                        image = rightrun1;
+                    }
+                    if (spriteNum == 2) {
+                        image = rightrun2;
+                    }
+                    if (spriteNum == 3) {
+                        image = rightrun3;
+                    }
+                    if (spriteNum == 4) {
+                        image = rightrun4;
+                    }
+                    if (spriteNum == 5) {
+                        image = rightrun5;
+                    }
+                    if (spriteNum == 6) {
+                        image = rightrun6;
+                    }
+                    break;
+
+                case "down":
+                    image = right2;
+                    break;
+
+                case "up":
+                    if (spriteNum == 1) {
+                        image = right1;
+                    }
+                    if (spriteNum == 2) {
+                        image = right2;
+                    }
+                    if (spriteNum == 3) {
+                        image = right3;
+                    }
+                    if (spriteNum == 4) {
+                        image = right4;
+                    }
+                    if (spriteNum == 5) {
+                        image = right5;
+                    }
+                    if (spriteNum == 6) {
+                        image = right6;
+                    }
+                    break;
+            }
+
+        }
+
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize ,null);
         g2.setColor(Color.red);

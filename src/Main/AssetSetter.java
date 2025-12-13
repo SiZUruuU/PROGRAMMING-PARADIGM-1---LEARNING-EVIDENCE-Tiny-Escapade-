@@ -17,13 +17,17 @@ public class AssetSetter {
 
     public void setObject(){
 
+        gp.obj[0] = new objDoor(gp);
+        gp.obj[0].worldX = gp.tileSize * 22;
+        gp.obj[0].worldY = gp.tileSize * 33;
 
     }
 
     public void setNPC() {
 
         gp.npc[0] = new Prisoner1_NPC(gp);
-        gp.npc[0].worldX = gp.tileSize * 21;
-        gp.npc[0].worldY = gp.tileSize * 21;
+        gp.npc[0].worldX = gp.tileSize * 46;
+        gp.npc[0].worldY = gp.tileSize * 45;
+
     }
 }

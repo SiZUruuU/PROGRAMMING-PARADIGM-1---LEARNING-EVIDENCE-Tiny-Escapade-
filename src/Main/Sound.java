@@ -14,6 +14,8 @@ public class Sound {
 
         soundURL[0] = getClass().getResource("/sound/Through Dark Gardens.wav");
         soundURL[1] = getClass().getResource("/sound/We Are Charlie Kirk Full Song Lyrics.wav");
+        soundURL[2] = getClass().getResource("/sound/Dungeon Ambience.wav");
+        soundURL[3] = getClass().getResource("/sound/Mouse Squeaking.wav");
     }
 
     public void setFile(int i){

@@ -14,41 +14,50 @@ public class Entity {
 
     public int worldX, worldY;
     public int normalSpeed;
+    public int sprintSpeed;
+    public int stamina = 100;
+    public int maxStamina = 100;
+    public int staminaRegenCount = 0;
 
     //Main Character Images
     public BufferedImage left1, left2, left3, left4, left5, left6, left7, left8;
     public BufferedImage right1, right2, right3, right4, right5, right6;
+    public BufferedImage rightrun1, rightrun2, rightrun3, rightrun4, rightrun5, rightrun6;
+    public BufferedImage leftrun1, leftrun2, leftrun3, leftrun4, leftrun5, leftrun6;
     public String direction;
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public int animationSpeed;
-    public Rectangle solidArea = new Rectangle(0,0,48,48);
+    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public int solidAreaDefaultX;
     public int solidAreaDefaultY;
     public boolean collisionOn = false;
     public int actionLockCounter;
     String dialogues[] = new String[20];
     int dialogueIndex = 0;
+    boolean sprint = false;
 
     //CHARACTER STATUS
     public int maxLife;
     public int life;
 
-    public Entity(GamePanel gp){
+    public Entity(GamePanel gp) {
         this.gp = gp;
     }
 
-    public void setAction(){}
-    public void speak(){
+    public void setAction() {
+    }
 
-        if(dialogues[dialogueIndex] == null){
+    public void speak() {
+
+        if (dialogues[dialogueIndex] == null) {
             dialogueIndex = 0;
         }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         dialogueIndex++;
 
-        switch(gp.player.direction) {
+        switch (gp.player.direction) {
 
             case "up":
                 direction = "down";
@@ -65,7 +74,8 @@ public class Entity {
         }
 
     }
-    public void update(){
+
+    public void update() {
 
         setAction();
 
@@ -74,9 +84,9 @@ public class Entity {
         gp.cChecker.checkObject(this, false);
         gp.cChecker.checkPlayer(this);
 
-        if(!collisionOn){
+        if (!collisionOn) {
 
-            switch(direction){
+            switch (direction) {
 
                 case "up":
                     worldY -= normalSpeed;
@@ -94,74 +104,73 @@ public class Entity {
 
         }
 
-            spriteCounter++;
-            int animationSpeed = 5;
-            if (spriteCounter > animationSpeed) {
-                spriteNum++;
-                if(spriteNum > 5) {
-                    spriteNum = 1;
-                }
-                spriteCounter = 0;
+        spriteCounter++;
+        int animationSpeed = 5;
+        if (spriteCounter > animationSpeed) {
+            spriteNum++;
+            if (spriteNum > 5) {
+                spriteNum = 1;
             }
-            else {
+            spriteCounter = 0;
+        } else {
             spriteNum = 1;
             spriteCounter = 0;
         }
 
     }
 
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
 
-        int screenX =  worldX - gp.player.worldX + gp.player.screenX;
-        int screenY =  worldY - gp.player.worldY + gp.player.screenY;
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if(worldX + gp.tileSize> gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize< gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize> gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize< gp.player.worldY + gp.player.screenY) {
+        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
 
             switch (direction) {
                 case "left":
-                    if(spriteNum == 1) {
+                    if (spriteNum == 1) {
                         image = left1;
                     }
-                    if(spriteNum == 2){
+                    if (spriteNum == 2) {
                         image = left2;
                     }
-                    if(spriteNum == 3){
+                    if (spriteNum == 3) {
                         image = left3;
                     }
-                    if(spriteNum == 4){
+                    if (spriteNum == 4) {
                         image = left4;
                     }
-                    if(spriteNum == 5){
+                    if (spriteNum == 5) {
                         image = left5;
                     }
-                    if(spriteNum == 6){
+                    if (spriteNum == 6) {
                         image = left6;
                     }
                     break;
 
 
                 case "right":
-                    if(spriteNum == 1) {
+                    if (spriteNum == 1) {
                         image = right1;
                     }
-                    if(spriteNum == 2){
+                    if (spriteNum == 2) {
                         image = right2;
                     }
-                    if(spriteNum == 3){
+                    if (spriteNum == 3) {
                         image = right3;
                     }
-                    if(spriteNum == 4){
+                    if (spriteNum == 4) {
                         image = right4;
                     }
-                    if(spriteNum == 5){
+                    if (spriteNum == 5) {
                         image = right5;
                     }
-                    if(spriteNum == 6){
+                    if (spriteNum == 6) {
                         image = right6;
                     }
                     break;
@@ -171,22 +180,22 @@ public class Entity {
                     break;
 
                 case "up":
-                    if(spriteNum == 1) {
+                    if (spriteNum == 1) {
                         image = right1;
                     }
-                    if(spriteNum == 2){
+                    if (spriteNum == 2) {
                         image = right2;
                     }
-                    if(spriteNum == 3){
+                    if (spriteNum == 3) {
                         image = right3;
                     }
-                    if(spriteNum == 4){
+                    if (spriteNum == 4) {
                         image = right4;
                     }
-                    if(spriteNum == 5){
+                    if (spriteNum == 5) {
                         image = right5;
                     }
-                    if(spriteNum == 6){
+                    if (spriteNum == 6) {
                         image = right6;
                     }
                     break;

@@ -2,8 +2,8 @@ package Main;
 
 import Objects.SuperObject;
 import Objects.objHealthBar;
+import Objects.objStaminaBar;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -16,6 +16,7 @@ public class UI {
     Graphics2D g2;
     Font maruMonica, PurisaB;
     BufferedImage healthBar1, healthBar2, healthBar3, healthBar4, healthBar5;
+    BufferedImage staminaBar1, staminaBar2, staminaBar3;
     public boolean messageOn = false;
     public String  message = "";
     int messageCounter = 0;
@@ -47,6 +48,11 @@ public class UI {
         healthBar3 = heart.image3;
         healthBar4 = heart.image4;
         healthBar5 = heart.image5;
+
+        SuperObject staminaBar = new objStaminaBar(gp);
+        staminaBar1 = staminaBar.image1;
+        staminaBar2 = staminaBar.image2;
+        staminaBar3 = staminaBar.image3;
     }
 
     public void showMessage(String text){
@@ -69,17 +75,23 @@ public class UI {
         //PLAY STATE
         if(gp.gameState == gp.playState){
             drawPlayerLife();
+            drawPlayerStaminaBar(g2);
+            drawStaminaBar();
         }
 
         //PAUSE STATE
         if(gp.gameState == gp.pauseState){
             drawPlayerLife();
             drawPauseScreen();
+            drawStaminaBar();
+            drawPlayerStaminaBar(g2);
         }
         //DIALOGUE STATE
         if(gp.gameState == gp.dialogueState){
             drawPlayerLife();
             drawDialogueScreen();
+            drawStaminaBar();
+            drawPlayerStaminaBar(g2);
         }
     }
 
@@ -109,9 +121,6 @@ public class UI {
                 break;
 
         }
-
-
-
 
 
     }
@@ -213,4 +222,43 @@ public class UI {
         return x;
 
     }
-}
+
+    public void drawPlayerStaminaBar(Graphics2D g2) {
+
+
+        // 1. SETUP POSITION & SIZE
+        int x = gp.tileSize * 5 + 4;
+        int y = gp.tileSize - 28; // Near bottom-left corner
+        int width = gp.tileSize * 5; // The bar is 5 tiles long total
+        int height = 14; // Height of the bar
+
+        double oneScale = (double)width / ((double) gp.player.maxStamina / 2);
+        double currentBarWidth = ((oneScale * gp.player.stamina) / 4) - 10;
+
+        // Prevent errors if stamina goes below 0
+        if(currentBarWidth < 0) { currentBarWidth = 0; }
+
+        // 4. DRAW FOREGROUND (The actual stamina)
+        g2.setColor(new Color(255, 255, 0)); // Yellow
+        g2.fillRect(x, y, (int)currentBarWidth, height);
+    }
+
+    public void drawStaminaBar() {
+
+        int x = gp.tileSize * 5;
+        int y = gp.tileSize / 9 + 4;
+        int i = 0;
+
+        //DRAW STAMINA BAR
+            if(gp.player.stamina <= 100 && gp.player.stamina >= 65) {
+                g2.drawImage(staminaBar1, x, y, null);
+            }
+            else if(gp.player.stamina <= 64 && gp.player.stamina >= 25) {
+                g2.drawImage(staminaBar2, x, y, null);
+            }
+            else if(gp.player.stamina < 25 && gp.player.stamina >= 0) {
+                g2.drawImage(staminaBar3, x, y, null);
+            }
+        }
+    }
+

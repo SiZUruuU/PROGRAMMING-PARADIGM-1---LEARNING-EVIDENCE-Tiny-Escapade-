@@ -47,9 +47,10 @@ public class GamePanel extends JPanel implements Runnable {
     //GAME STATE
     public int gameState;
     public final int titleState = 0;
-    public final int playState = 1;
-    public final int pauseState = 2;
-    public final int dialogueState = 3;
+    public final int guideState = 1;
+    public final int playState = 2;
+    public final int pauseState = 3;
+    public final int dialogueState = 4;
 
     //Default PLAYER position
 
@@ -70,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         aSetter.setObject();
         aSetter.setNPC();
-//        playMusic(1);
+//        playMusic(0);
         gameState = titleState;
     }
 
@@ -148,8 +149,8 @@ public class GamePanel extends JPanel implements Runnable {
             ui.draw(g2);
         }else{
 
-            //TILE
-            tileM.draw(g2);
+            //HIND TILES
+            tileM.draw(g2, false);
 
             //OBJECT
             for (int i = 0; i < obj.length; i++) {
@@ -167,7 +168,9 @@ public class GamePanel extends JPanel implements Runnable {
 
             //PLAYER
             player.draw(g2);
-
+            //FORE TILES
+            tileM.draw(g2, true);
+            eHandler.draw(g2);
             //UI
             ui.draw(g2);
         }

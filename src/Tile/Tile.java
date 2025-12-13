@@ -11,4 +11,6 @@ public class Tile {
     public Rectangle solidArea = new Rectangle(0, 0, 16, 16);
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
+
+    public boolean front = false;
 }
