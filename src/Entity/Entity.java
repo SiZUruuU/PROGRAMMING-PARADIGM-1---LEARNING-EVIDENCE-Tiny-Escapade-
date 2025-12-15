@@ -20,11 +20,13 @@ public class Entity {
     public int staminaRegenCount = 0;
 
     //Main Character Images
-    public BufferedImage left1, left2, left3, left4, left5, left6, left7, left8;
+    public BufferedImage left1, left2, left3, left4, left5, left6;
     public BufferedImage right1, right2, right3, right4, right5, right6;
+    public BufferedImage up1, up2, up3, up4, up5, up6;
+    public BufferedImage down1, down2, down3, down4, down5, down6;
     public BufferedImage rightrun1, rightrun2, rightrun3, rightrun4, rightrun5, rightrun6;
     public BufferedImage leftrun1, leftrun2, leftrun3, leftrun4, leftrun5, leftrun6;
-    public String direction;
+    public String direction = "down";
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public int animationSpeed;
@@ -33,9 +35,15 @@ public class Entity {
     public int solidAreaDefaultY;
     public boolean collisionOn = false;
     public int actionLockCounter;
+    public boolean invincible = false;
+    public int invincibleCounter = 0;
     String dialogues[] = new String[20];
     int dialogueIndex = 0;
     boolean sprint = false;
+    public BufferedImage image;
+    public BufferedImage image1, image2, image3, image4, image5, image6;
+    public String name;
+    public boolean collision = false;
 
     //CHARACTER STATUS
     public int maxLife;
@@ -82,6 +90,8 @@ public class Entity {
         collisionOn = false;
         gp.cChecker.checkTile(this);
         gp.cChecker.checkObject(this, false);
+        gp.cChecker.checkEntity(this, gp.npc);
+        gp.cChecker.checkEntity(this, gp.monster);
         gp.cChecker.checkPlayer(this);
 
         if (!collisionOn) {
@@ -176,7 +186,7 @@ public class Entity {
                     break;
 
                 case "down":
-                    image = right2;
+                    image = down1;
                     break;
 
                 case "up":
@@ -202,6 +212,17 @@ public class Entity {
             }
 
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+            if (gp.keyH.checkDrawTime) {
+                g2.setColor(Color.RED);
+                // We use drawRect (outline), not fillRect
+                g2.drawRect(
+                        screenX + solidArea.x,  // X position
+                        screenY + solidArea.y,  // Y position
+                        solidArea.width,        // Width
+                        solidArea.height        // Height
+                );
+            }
         }
     }
 
@@ -214,6 +235,22 @@ public class Entity {
 
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return image;
+    }
+
+    public BufferedImage setUp(String imagePath, int width, int height) {
+
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+
+        try{
+            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            // Now it scales to WHATEVER size you ask for, not just tileSize
+            image = uTool.scaleImage(image, width, height);
 
         }catch(IOException e){
             e.printStackTrace();

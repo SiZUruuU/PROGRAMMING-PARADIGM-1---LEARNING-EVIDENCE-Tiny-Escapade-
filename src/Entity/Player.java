@@ -119,6 +119,10 @@ public class Player extends Entity {
         //Check Event
         gp.eHandler.CheckEvent();
 
+        //Check Monster Collision
+        int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+        contactMonster(monsterIndex);
+
         if (keyH.shiftPressed && isMoving && stamina > 0) {
             sprint = true;
             normalSpeed = sprintSpeed;
@@ -153,8 +157,6 @@ public class Player extends Entity {
             }
         }
 
-
-
         if(!collisionOn && isMoving){
 
                 switch(direction){
@@ -175,7 +177,6 @@ public class Player extends Entity {
 
             }
 
-
         if (isMoving) {
             spriteCounter++;
             int animationSpeed = 5;
@@ -190,11 +191,21 @@ public class Player extends Entity {
             spriteNum = 1;
             spriteCounter = 0;
         }
+
+        if(invincible){
+            invincibleCounter++;
+            if(invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
 
     public void pickUpObject(int i){
 
         if(i != 999){
+
+
 
         }
     }
@@ -207,12 +218,19 @@ public class Player extends Entity {
             if (gp.keyH.eKeyPressed) {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
-                if (life > 1) {
-                    life--;
-                    System.out.print(life);
-                }
+                gp.playSE(4);
             }
             gp.keyH.eKeyPressed = false;
+        }
+    }
+
+    public void contactMonster(int i){
+
+        if(i != 999){
+            if(!invincible) {
+                life -= 1;
+                invincible = true;
+            }
         }
     }
 
@@ -366,11 +384,11 @@ public class Player extends Entity {
 
         }
 
-
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize ,null);
-        g2.setColor(Color.red);
-        g2.drawRect(screenX + solidArea.x,screenY + solidArea.y, solidArea.width, solidArea.height);
 
-
+        if (gp.keyH.checkDrawTime) {
+            g2.setColor(Color.red);
+            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        }
     }
 }

@@ -5,50 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c2caa29-d47c-488f-87cd-96e3336cec3e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/maps/newmap2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/leftrun0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/leftrun1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/leftrun2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/leftrun3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/leftrun4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/leftrun5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/rightrun0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/rightrun1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/rightrun2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/rightrun3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/rightrun4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/rightrun5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/Dungeon Ambience.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/Mouse Squeaking.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Objects/objStaminaBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/hp/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/hp/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/hp/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/hp/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/hp/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/hp/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/hp/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/hp/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/hp/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/hp/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/newmap.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/newmap.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/tile007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/sound/Through Dark Gardens.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/sound/Through Dark Gardens.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/sound/We Are Charlie Kirk Full Song Lyrics.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/sound/We Are Charlie Kirk Full Song Lyrics.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Prisoner1_NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Prisoner1_NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/AssetSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/CollisionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Sound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/SuperObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/objChest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objChest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/objDoor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objDoor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/objHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objHealthBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/objKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/objOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objOrb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/objStaminaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objStaminaBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,16 +90,5 @@
       <updated>1765109826061</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/KeyHandler.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

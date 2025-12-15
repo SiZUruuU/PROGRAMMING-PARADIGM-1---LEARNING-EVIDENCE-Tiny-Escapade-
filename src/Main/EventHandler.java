@@ -110,6 +110,8 @@ public class EventHandler {
 
         // Draw the rectangle
         // We use eventRect.width/height to see the exact trigger size
-        g2.drawRect(screenX, screenY, eventRect.width, eventRect.height);
+        if (gp.keyH.checkDrawTime) {
+            g2.drawRect(screenX, screenY, eventRect.width, eventRect.height);
+        }
     }
 }

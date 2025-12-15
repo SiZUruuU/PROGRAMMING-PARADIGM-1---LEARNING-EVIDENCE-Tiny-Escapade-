@@ -1,34 +1,25 @@
 package Objects;
 
+import Entity.Entity;
 import Main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class objHealthBar extends SuperObject{
-
-    GamePanel gp;
+public class objHealthBar extends Entity {
 
     public objHealthBar(GamePanel gp) {
-        this.gp = gp;
+        super(gp);
 
         name = "HealthBar";
+        int width = gp.tileSize * 3 + 8;
+        int height = gp.tileSize;
 
-        try{
-            image1 = ImageIO.read(getClass().getResourceAsStream("/hp/1.png"));
-            image2 = ImageIO.read(getClass().getResourceAsStream("/hp/2.png"));
-            image3 = ImageIO.read(getClass().getResourceAsStream("/hp/3.png"));
-            image4 = ImageIO.read(getClass().getResourceAsStream("/hp/4.png"));
-            image5 = ImageIO.read(getClass().getResourceAsStream("/hp/5.png"));
-            image1 = uTool.scaleImage(image1, gp.tileSize * 4, gp.tileSize);
-            image2 = uTool.scaleImage(image2, gp.tileSize * 4, gp.tileSize);
-            image3 = uTool.scaleImage(image3, gp.tileSize * 4, gp.tileSize);
-            image4 = uTool.scaleImage(image4, gp.tileSize * 4, gp.tileSize);
-            image5 = uTool.scaleImage(image5, gp.tileSize * 4, gp.tileSize);
+        image1 = setUp("/hp/1", width, height);
+        image2 = setUp("/hp/2", width, height);
+        image3 = setUp("/hp/3", width, height);
+        image4 = setUp("/hp/4", width, height);
+        image5 = setUp("/hp/5", width, height);
 
-        }catch(IOException e){
-
-            e.printStackTrace();
-        }
     }
 }

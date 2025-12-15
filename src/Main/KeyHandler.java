@@ -9,7 +9,7 @@ public class KeyHandler implements KeyListener{
 
     GamePanel gp;
     public boolean upPressed, downPressed, leftPressed, rightPressed, shiftPressed, eKeyPressed;
-    boolean checkDrawTime = false; //debug boolean
+    public boolean checkDrawTime = false; //debug boolean
 
     public KeyHandler(GamePanel gp){
         this.gp = gp;
@@ -42,14 +42,35 @@ public class KeyHandler implements KeyListener{
             }
             if(code == KeyEvent.VK_ENTER){
                 if(gp.ui.commandNum == 0){
-                    gp.gameState = gp.playState;
-                    gp.playMusic(2);
+                    gp.gameState = gp.guideState;
+                    gp.guideTimer = 0;
+                    gp.guidePage = 0;
                 }
                 if(gp.ui.commandNum == 1){
 
                 }
                 if(gp.ui.commandNum == 2){
                     System.exit(0);
+                }
+
+            }
+        }
+        else if (gp.gameState == gp.guideState) {
+
+            if (code == KeyEvent.VK_ENTER) {
+
+                if(gp.guideTimer > 180) {
+
+                    if (gp.guidePage == 0) {
+                        gp.guidePage = 1;
+                        gp.guideTimer = 0;
+                    } else if (gp.guidePage == 1) {
+                        gp.guidePage = 2;
+                        gp.guideTimer = 0;
+                    } else if (gp.guidePage == 2) {
+                        gp.gameState = gp.playState;
+                        gp.playMusic(2);
+                    }
                 }
             }
         }

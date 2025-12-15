@@ -1,29 +1,19 @@
 package Objects;
 
+import Entity.Entity;
 import Main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class objOrb extends SuperObject{
-
-    GamePanel gp;
+public class objOrb extends Entity {
 
     public objOrb(GamePanel gp){
-
-        this.gp = gp;
+        super(gp);
 
         name = "Orb";
+        down1 = setUp("/orb/orb");
 
-        try{
-
-            image = ImageIO.read(getClass().getResourceAsStream("/orb/1.png"));
-            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-
-        }catch(IOException e){
-
-            e.printStackTrace();
-        }
 
     }
 }

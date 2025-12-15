@@ -16,6 +16,7 @@ public class Sound {
         soundURL[1] = getClass().getResource("/sound/We Are Charlie Kirk Full Song Lyrics.wav");
         soundURL[2] = getClass().getResource("/sound/Dungeon Ambience.wav");
         soundURL[3] = getClass().getResource("/sound/Mouse Squeaking.wav");
+        soundURL[4] = getClass().getResource("/sound/Grumpy Old Man.wav");
     }
 
     public void setFile(int i){

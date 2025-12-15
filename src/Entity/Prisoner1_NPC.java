@@ -1,7 +1,9 @@
 package Entity;
 
 import Main.GamePanel;
+import org.w3c.dom.css.Rect;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Prisoner1_NPC extends Entity{
@@ -11,6 +13,10 @@ public class Prisoner1_NPC extends Entity{
 
         int plus = 0;
         plus++;
+
+        solidArea = new Rectangle(14,30,20, 15);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
         direction = "down";
         normalSpeed = 1;
@@ -40,10 +46,11 @@ public class Prisoner1_NPC extends Entity{
 
     public void setDialogue(){
 
-        dialogues[0] = "I have been trapped in here for 20 years...";
-        dialogues[1] = "I remember your face...\nyes I know it well...\nThe resemblance is very similar to HIM";
-        dialogues[2] = "I feel death behind me...";
-        dialogues[3] = "THE ANNOYANCE!!! I BEG YOU TO STOP!";
+        dialogues[0] = "What are you doing here, kid?";
+        dialogues[1] = "If your one of Kasper's men...Forget it. Reyn has taken \neverything with value.";
+        dialogues[2] = "I sense something within you...A power that stands at the \npinnacle of all.";
+        dialogues[3] = "The future tells me your power will bring destruction to the world";
+        dialogues[4] = "The Executioner has found Its new host...";
 
     }
 
@@ -93,8 +100,5 @@ public class Prisoner1_NPC extends Entity{
 //            dialogueCount++;
 //        }
 //        System.out.println(dialogueCount);
-
-
     }
-
 }

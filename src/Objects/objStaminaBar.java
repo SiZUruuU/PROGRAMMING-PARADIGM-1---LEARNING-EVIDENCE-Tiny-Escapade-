@@ -1,31 +1,24 @@
 package Objects;
 
+import Entity.Entity;
 import Main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class objStaminaBar extends SuperObject{
-
-    GamePanel gp;
+public class objStaminaBar extends Entity {
 
     public objStaminaBar(GamePanel gp) {
-        this.gp = gp;
+        super(gp);
 
-        name = "Key";
+        name = "StaminaBar";
+        int width = gp.tileSize * 3 + 8;
+        int height = gp.tileSize / 2 + 10;
 
-        try{
-            image1 = ImageIO.read(getClass().getResourceAsStream("/hp/energy bar 1.png"));
-            image2 = ImageIO.read(getClass().getResourceAsStream("/hp/energy bar 2.png"));
-            image3 = ImageIO.read(getClass().getResourceAsStream("/hp/energy bar 3.png"));
-            image1 = uTool.scaleImage(image1, gp.tileSize * 3, (gp.tileSize / 2) + 10);
-            image2 = uTool.scaleImage(image2, gp.tileSize * 3, (gp.tileSize / 2) + 10);
-            image3 = uTool.scaleImage(image3, gp.tileSize * 3, (gp.tileSize / 2) + 10);
+        image1 = setUp("/hp/energy bar 1", width, height);
+        image2 = setUp("/hp/energy bar 2", width, height);
+        image3 = setUp("/hp/energy bar 3", width, height);
 
-        }catch(IOException e){
-
-            e.printStackTrace();
-        }
     }
 }

@@ -1,6 +1,6 @@
 package Main;
 
-import Objects.SuperObject;
+import Entity.Entity;
 import Objects.objHealthBar;
 import Objects.objStaminaBar;
 
@@ -42,14 +42,14 @@ public class UI {
         }
 
         //CREATE HUD OBJECT
-        SuperObject heart = new objHealthBar(gp);
+        Entity heart = new objHealthBar(gp);
         healthBar1 = heart.image1;
         healthBar2 = heart.image2;
         healthBar3 = heart.image3;
         healthBar4 = heart.image4;
         healthBar5 = heart.image5;
 
-        SuperObject staminaBar = new objStaminaBar(gp);
+        Entity staminaBar = new objStaminaBar(gp);
         staminaBar1 = staminaBar.image1;
         staminaBar2 = staminaBar.image2;
         staminaBar3 = staminaBar.image3;
@@ -72,6 +72,11 @@ public class UI {
         if(gp.gameState == gp.titleState){
             drawTitleScreen();
         }
+
+        //GUIDESTATE
+        if(gp.gameState == gp.guideState){
+            drawGuideScreen();
+        }
         //PLAY STATE
         if(gp.gameState == gp.playState){
             drawPlayerLife();
@@ -89,10 +94,11 @@ public class UI {
         //DIALOGUE STATE
         if(gp.gameState == gp.dialogueState){
             drawPlayerLife();
-            drawDialogueScreen();
-            drawStaminaBar();
             drawPlayerStaminaBar(g2);
+            drawStaminaBar();
+            drawDialogueScreen();
         }
+
     }
 
     public void drawPlayerLife(){
@@ -119,10 +125,7 @@ public class UI {
             case 1:
                 g2.drawImage(healthBar5, x, y, null);
                 break;
-
         }
-
-
     }
 
     public void drawTitleScreen(){
@@ -171,6 +174,137 @@ public class UI {
         }
     }
 
+    public void drawGuideScreen(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        if(gp.guidePage == 0) {
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
+
+            String text = "Controls";
+            int x = getXforCenteredText(text);
+            int y = gp.tileSize * 2;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30F));
+            text = "Movement:";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 3;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "W - Walk Up";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 4;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "S - Walk Down";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 5;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "A - Walk Right";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 6;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "D - Walk Left";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 7;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "Shift - Sprint";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 8;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "E - Interact";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 9;
+            g2.drawString(text, x, y);
+        }
+        else if(gp.guidePage == 1){
+
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
+
+            String text = "Sprint Mechanics";
+            int x = getXforCenteredText(text);
+            int y = gp.tileSize * 2;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 25F));
+            text = "This is your Stamina Bar";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 4;
+            g2.drawString(text, x, y);
+
+            x = getXforCenteredText(text) + 65;
+            y = gp.tileSize * 5 - 15;
+            g2.drawImage(staminaBar1, x, y, null);
+
+            text = "You can only sprint for as long";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 8;
+            g2.drawString(text, x, y);
+
+            text = "as your stamina bar is filled";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 9;
+            g2.drawString(text, x, y);
+
+        }
+        else if(gp.guidePage == 2){
+
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
+
+            String text = "HOW TO WIN?";
+            int x = getXforCenteredText(text);
+            int y = gp.tileSize * 2;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 25F));
+            text = "Collect orbs, keys to unlock the main room! (Its that simple)";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 5;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "Be Careful! Nasty critters lurk the area...";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 7;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "Do you best to avoid getting hurt!";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 8;
+            g2.drawString(text, x, y);
+        }
+        if (gp.guideTimer > 180) {
+
+            g2.setFont(g2.getFont().deriveFont(20F));
+            g2.setColor(Color.yellow);
+
+            String text = ">>PRESS ENTER TO CONTINUE<< ";
+            // If it's the last page, maybe change text to "START GAME"
+            if(gp.guidePage == 2) {
+                text = ">>>PRESS ENTER TO START<<<";
+            }
+
+            int x = getXforCenteredText(text);
+            int y = gp.screenHeight - (gp.tileSize * 2);
+            g2.drawString(text, x, y);
+        }
+    }
+
 
     public void drawPauseScreen(){
 
@@ -180,6 +314,43 @@ public class UI {
         int y = gp.screenHeight / 2;
         g2.drawString(text, x, y);
 
+    }
+
+    public void drawPlayerStaminaBar(Graphics2D g2) {
+
+        //StaminaBar Position
+        int x = gp.tileSize / 3 + 5;
+        int y = gp.tileSize + 11;
+        int width = gp.tileSize * 5 + 6;
+        int height = 14;
+
+        double oneScale = (double)width / ((double) gp.player.maxStamina / 2);
+        double currentBarWidth = ((oneScale * gp.player.stamina) / 4) - 10;
+
+
+        if(currentBarWidth < 0) { currentBarWidth = 0; }
+
+
+        g2.setColor(new Color(255, 255, 0));
+        g2.fillRect(x, y, (int)currentBarWidth, height);
+    }
+
+    public void drawStaminaBar() {
+
+        int x = gp.tileSize / 3;
+        int y = gp.tileSize;
+        int i = 0;
+
+        //DRAW STAMINA BAR
+        if(gp.player.stamina <= 100 && gp.player.stamina >= 51) {
+            g2.drawImage(staminaBar1, x, y, null);
+        }
+        else if(gp.player.stamina <= 50 && gp.player.stamina >= 1) {
+            g2.drawImage(staminaBar2, x, y, null);
+        }
+        else if(gp.player.stamina == 0) {
+            g2.drawImage(staminaBar3, x, y, null);
+        }
     }
 
     public void drawDialogueScreen(){
@@ -192,7 +363,7 @@ public class UI {
 
         drawSubWindow(x, y, width, height);
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 15F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20F));
         x += gp.tileSize;
         y += gp.tileSize;
 
@@ -222,43 +393,5 @@ public class UI {
         return x;
 
     }
-
-    public void drawPlayerStaminaBar(Graphics2D g2) {
-
-
-        // 1. SETUP POSITION & SIZE
-        int x = gp.tileSize * 5 + 4;
-        int y = gp.tileSize - 28; // Near bottom-left corner
-        int width = gp.tileSize * 5; // The bar is 5 tiles long total
-        int height = 14; // Height of the bar
-
-        double oneScale = (double)width / ((double) gp.player.maxStamina / 2);
-        double currentBarWidth = ((oneScale * gp.player.stamina) / 4) - 10;
-
-        // Prevent errors if stamina goes below 0
-        if(currentBarWidth < 0) { currentBarWidth = 0; }
-
-        // 4. DRAW FOREGROUND (The actual stamina)
-        g2.setColor(new Color(255, 255, 0)); // Yellow
-        g2.fillRect(x, y, (int)currentBarWidth, height);
-    }
-
-    public void drawStaminaBar() {
-
-        int x = gp.tileSize * 5;
-        int y = gp.tileSize / 9 + 4;
-        int i = 0;
-
-        //DRAW STAMINA BAR
-            if(gp.player.stamina <= 100 && gp.player.stamina >= 65) {
-                g2.drawImage(staminaBar1, x, y, null);
-            }
-            else if(gp.player.stamina <= 64 && gp.player.stamina >= 25) {
-                g2.drawImage(staminaBar2, x, y, null);
-            }
-            else if(gp.player.stamina < 25 && gp.player.stamina >= 0) {
-                g2.drawImage(staminaBar3, x, y, null);
-            }
-        }
     }
 
