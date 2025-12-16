@@ -17,6 +17,13 @@ public class Sound {
         soundURL[2] = getClass().getResource("/sound/Dungeon Ambience.wav");
         soundURL[3] = getClass().getResource("/sound/Mouse Squeaking.wav");
         soundURL[4] = getClass().getResource("/sound/Grumpy Old Man.wav");
+        soundURL[5] = getClass().getResource("/sound/Ding Sound Effect 4.wav");
+        soundURL[6] = getClass().getResource("/sound/punch sfx.wav");
+        soundURL[7] = getClass().getResource("/sound/miss punch sfx.wav");
+        soundURL[8] = getClass().getResource("/sound/damage 1.wav");
+        soundURL[9] = getClass().getResource("/sound/damage 2.wav");
+        soundURL[10] = getClass().getResource("/sound/damage 3.wav");
+
     }
 
     public void setFile(int i){

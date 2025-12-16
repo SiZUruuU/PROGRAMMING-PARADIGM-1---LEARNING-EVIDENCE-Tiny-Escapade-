@@ -13,7 +13,5 @@ public class objOrb extends Entity {
 
         name = "Orb";
         down1 = setUp("/orb/orb");
-
-
     }
 }

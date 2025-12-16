@@ -12,38 +12,55 @@ public class Entity {
 
     GamePanel gp;
 
+    //World State
     public int worldX, worldY;
+    public int solidAreaDefaultX;
+    public int solidAreaDefaultY;
+
+    //Player State
     public int normalSpeed;
     public int sprintSpeed;
     public int stamina = 100;
     public int maxStamina = 100;
     public int staminaRegenCount = 0;
+    boolean sprint = false;
+    boolean attacking = false;
+    boolean alive = true;
+    boolean dying = false;
 
-    //Main Character Images
+    //Entity Animation Variables
+    public String direction = "down";
+    public int spriteCounter = 0;
+    public int spriteNum = 1;
+    public int animationSpeed;
+
+    //Counter
+    public int invincibleCounter = 0;
+    public int actionLockCounter;
+    int dialogueIndex = 0;
+    int dyingCounter = 0;
+
+    //Entity Buffered Images
     public BufferedImage left1, left2, left3, left4, left5, left6;
     public BufferedImage right1, right2, right3, right4, right5, right6;
     public BufferedImage up1, up2, up3, up4, up5, up6;
     public BufferedImage down1, down2, down3, down4, down5, down6;
     public BufferedImage rightrun1, rightrun2, rightrun3, rightrun4, rightrun5, rightrun6;
     public BufferedImage leftrun1, leftrun2, leftrun3, leftrun4, leftrun5, leftrun6;
-    public String direction = "down";
-    public int spriteCounter = 0;
-    public int spriteNum = 1;
-    public int animationSpeed;
-    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
-    public int solidAreaDefaultX;
-    public int solidAreaDefaultY;
-    public boolean collisionOn = false;
-    public int actionLockCounter;
-    public boolean invincible = false;
-    public int invincibleCounter = 0;
-    String dialogues[] = new String[20];
-    int dialogueIndex = 0;
-    boolean sprint = false;
+    public BufferedImage atkleft1, atkleft2, atkleft3, atkleft4, atkleft5, atkleft6;
+    public BufferedImage atkright1, atkright2, atkright3, atkright4, atkright5, atkright6;
     public BufferedImage image;
     public BufferedImage image1, image2, image3, image4, image5, image6;
+
+    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+    public Rectangle attackArea = new Rectangle(0,10,0,0);
+    public boolean collisionOn = false;
+    public boolean invincible = false;
+    String dialogues[] = new String[20];
+
     public String name;
     public boolean collision = false;
+    public int type; //0 - player, 1 - npc, 2 - monster
 
     //CHARACTER STATUS
     public int maxLife;
@@ -92,10 +109,18 @@ public class Entity {
         gp.cChecker.checkObject(this, false);
         gp.cChecker.checkEntity(this, gp.npc);
         gp.cChecker.checkEntity(this, gp.monster);
-        gp.cChecker.checkPlayer(this);
+        boolean contactPlayer = gp.cChecker.checkPlayer(this);
+
+        if(this.type == 2 && contactPlayer){
+            if(!gp.player.invincible){
+                if(life > 0) {
+                    gp.player.life--;
+                    gp.player.invincible = true;
+                }
+            }
+        }
 
         if (!collisionOn) {
-
             switch (direction) {
 
                 case "up":
@@ -111,7 +136,6 @@ public class Entity {
                     worldX += normalSpeed;
                     break;
             }
-
         }
 
         spriteCounter++;
@@ -125,6 +149,14 @@ public class Entity {
         } else {
             spriteNum = 1;
             spriteCounter = 0;
+        }
+
+        if (invincible) {
+            invincibleCounter++;
+            if (invincibleCounter > 30) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
         }
 
     }
@@ -143,46 +175,22 @@ public class Entity {
 
             switch (direction) {
                 case "left":
-                    if (spriteNum == 1) {
-                        image = left1;
-                    }
-                    if (spriteNum == 2) {
-                        image = left2;
-                    }
-                    if (spriteNum == 3) {
-                        image = left3;
-                    }
-                    if (spriteNum == 4) {
-                        image = left4;
-                    }
-                    if (spriteNum == 5) {
-                        image = left5;
-                    }
-                    if (spriteNum == 6) {
-                        image = left6;
-                    }
+                    if (spriteNum == 1) {image = left1;}
+                    if (spriteNum == 2) {image = left2;}
+                    if (spriteNum == 3) {image = left3;}
+                    if (spriteNum == 4) {image = left4;}
+                    if (spriteNum == 5) {image = left5;}
+                    if (spriteNum == 6) {image = left6;}
                     break;
 
 
                 case "right":
-                    if (spriteNum == 1) {
-                        image = right1;
-                    }
-                    if (spriteNum == 2) {
-                        image = right2;
-                    }
-                    if (spriteNum == 3) {
-                        image = right3;
-                    }
-                    if (spriteNum == 4) {
-                        image = right4;
-                    }
-                    if (spriteNum == 5) {
-                        image = right5;
-                    }
-                    if (spriteNum == 6) {
-                        image = right6;
-                    }
+                    if (spriteNum == 1) {image = right1;}
+                    if (spriteNum == 2) {image = right2;}
+                    if (spriteNum == 3) {image = right3;}
+                    if (spriteNum == 4) {image = right4;}
+                    if (spriteNum == 5) {image = right5;}
+                    if (spriteNum == 6) {image = right6;}
                     break;
 
                 case "down":
@@ -190,28 +198,24 @@ public class Entity {
                     break;
 
                 case "up":
-                    if (spriteNum == 1) {
-                        image = right1;
-                    }
-                    if (spriteNum == 2) {
-                        image = right2;
-                    }
-                    if (spriteNum == 3) {
-                        image = right3;
-                    }
-                    if (spriteNum == 4) {
-                        image = right4;
-                    }
-                    if (spriteNum == 5) {
-                        image = right5;
-                    }
-                    if (spriteNum == 6) {
-                        image = right6;
-                    }
+                    if (spriteNum == 1) {image = right1;}
+                    if (spriteNum == 2) {image = right2;}
+                    if (spriteNum == 3) {image = right3;}
+                    if (spriteNum == 4) {image = right4;}
+                    if (spriteNum == 5) {image = right5;}
+                    if (spriteNum == 6) {image = right6;}
                     break;
             }
 
+            if (invincible) {
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F));
+            }
+            if(dying){
+                dyingAnimation(g2);
+            }
+
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
 
             if (gp.keyH.checkDrawTime) {
                 g2.setColor(Color.RED);
@@ -224,6 +228,31 @@ public class Entity {
                 );
             }
         }
+    }
+
+    public void dyingAnimation(Graphics2D g2){
+
+        dyingCounter++;
+
+        if(dyingCounter <= 5){changeAlpha(g2, 0f);}
+        if(dyingCounter > 5 && dyingCounter <= 10){changeAlpha(g2, 1f);}
+        if(dyingCounter > 10 && dyingCounter <= 15){changeAlpha(g2, 0f);}
+        if(dyingCounter > 15 && dyingCounter <= 20){changeAlpha(g2, 1f);}
+        if(dyingCounter > 20 && dyingCounter <= 25){changeAlpha(g2, 0f);}
+        if(dyingCounter > 25 && dyingCounter <= 30){changeAlpha(g2, 1f);}
+        if(dyingCounter > 30 && dyingCounter <= 35){changeAlpha(g2, 0f);}
+        if(dyingCounter > 35 && dyingCounter <= 40){changeAlpha(g2, 1f);}
+        if(dyingCounter > 40){
+            dying = false;
+            alive = false;
+        }
+
+    }
+
+    public void changeAlpha(Graphics2D g2, float alphaValue){
+
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
+
     }
 
     public BufferedImage setUp(String imagePath) {
@@ -249,7 +278,6 @@ public class Entity {
 
         try{
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
-            // Now it scales to WHATEVER size you ask for, not just tileSize
             image = uTool.scaleImage(image, width, height);
 
         }catch(IOException e){

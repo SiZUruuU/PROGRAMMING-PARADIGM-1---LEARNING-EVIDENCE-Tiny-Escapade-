@@ -9,6 +9,7 @@ public class MainClass {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
+
         char res;
 
             System.out.println("\nThis game is a horrible depiction of the origins of the First Supreme King of Cahtlacun.");

@@ -10,6 +10,8 @@ public class MON_Ghost extends Entity {
     public MON_Ghost(GamePanel gp) {
         super(gp);
 
+        type = 2;
+
         name = "Ghost";
         normalSpeed = 1;
         maxLife = 3;

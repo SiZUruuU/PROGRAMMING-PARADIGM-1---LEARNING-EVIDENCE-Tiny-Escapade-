@@ -6,24 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8c2caa29-d47c-488f-87cd-96e3336cec3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/newmap2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/newmap2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Prisoner1_NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Prisoner1_NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/AssetSetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/SuperObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/objChest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objChest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/objDoor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objDoor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/objHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objHealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/objKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monster/MON_Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster/MON_Ghost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Objects/objOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/objStaminaBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objStaminaBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

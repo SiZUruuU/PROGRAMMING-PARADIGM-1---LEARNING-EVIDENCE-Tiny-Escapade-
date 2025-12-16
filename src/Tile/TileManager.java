@@ -88,7 +88,7 @@ public class TileManager {
         setUp(36, "36", false,false,0, 0, 16, 16);
         setUp(37, "37", false,false,0, 0, 16, 16);
         setUp(38, "38", true,true,0, 0, 16, 16);
-        setUp(39, "39", true,true,0, 0, 16, 16);
+        setUp(39, "39", true,false,30, 0, 16, 48);
         setUp(40, "40", true,true,0, 0, 16, 16);
         setUp(41, "41", true,true,0, 0, 16, 48);
         setUp(42, "42", false,true,0, 0, 16, 16);
