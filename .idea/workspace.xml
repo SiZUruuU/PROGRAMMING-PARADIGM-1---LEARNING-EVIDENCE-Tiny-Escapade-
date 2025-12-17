@@ -1,9 +1,12 @@
+<!-- Workspace/IDE state -->
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
+    <!-- Gradle/Maven auto‑reloading -->
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <!-- Default changelist and the files currently modified -->
     <list default="true" id="8c2caa29-d47c-488f-87cd-96e3336cec3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/newmap2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/newmap2.txt" afterDir="false" />
@@ -17,15 +20,18 @@
       <change beforePath="$PROJECT_DIR$/src/Objects/objOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/objOrb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
     </list>
+    <!-- Preferences for how changelist UI -->
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExportToHTMLSettings">
+    <!-- Default export to HTML folder -->
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../Days Break\exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
+    <!-- Used file templates -->
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
@@ -33,37 +39,40 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <!-- Git root that was used -->
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 5
+  "customColor": "",
+  "associatedIndex": 5
 }</component>
   <component name="ProjectId" id="36W68vDQid0b5OgIuduINFa2YOg" />
   <component name="ProjectViewState">
+    <!-- How packages and libraries are shown in the project view -->
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MainClass.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Josh Ihalas/Documents/IntelliJ CE Projects/Days Break/res/maps&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  "keyToString": {
+    "Application.MainClass.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Josh Ihalas/Documents/IntelliJ CE Projects/Days Break/res/maps",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "to.speed.mode.migration.done": "true"
   }
 }</component>
   <component name="RecentsManager">
+    <!-- Folders that was used for copy/move actions -->
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\res\maps" />
       <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\res\monkey" />
@@ -73,6 +82,7 @@
     </key>
   </component>
   <component name="TaskManager">
+    <!-- The default task that groups this changelist and timestamps -->
     <task active="true" id="Default" summary="Default task">
       <changelist id="8c2caa29-d47c-488f-87cd-96e3336cec3e" name="Changes" comment="" />
       <created>1765109826061</created>
