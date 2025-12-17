@@ -1,6 +1,6 @@
-<component name="InspectionProjectProfileManager">
-  <profile version="1.0">
-    <option name="myName" value="Project Default" />
-    <inspection_tool class="RandomDoubleForRandomInteger" enabled="true" level="WARNING" enabled_by_default="true" />
+<component name="InspectionProjectProfileManager"> <!-- Project inspections -->
+  <profile version="1.0"> <!-- Profile -->
+    <option name="myName" value="Project Default" /> <!-- Profile name -->
+    <inspection_tool class="RandomDoubleForRandomInteger" enabled="true" level="WARNING" enabled_by_default="true" /> <!-- warning -->
   </profile>
 </component>
