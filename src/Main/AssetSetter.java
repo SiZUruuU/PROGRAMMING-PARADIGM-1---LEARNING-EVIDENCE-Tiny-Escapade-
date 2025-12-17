@@ -13,16 +13,16 @@ public class AssetSetter {
 
     public AssetSetter(GamePanel gp){
 
-        this.gp = gp;
+        this.gp = gp; // Keep reference to the current GamePanel
     }
 
     public void setObject(){
 
-        gp.obj[0] = new objDoor(gp);
+        gp.obj[0] = new objDoor(gp);              // Exit door
         gp.obj[0].worldX = gp.tileSize * 22;
         gp.obj[0].worldY = gp.tileSize * 33;
 
-        gp.obj[1] = new objOrb(gp);
+        gp.obj[1] = new objOrb(gp);               // Orbs in a horizontal row
         gp.obj[1].worldX = gp.tileSize * 2;
         gp.obj[1].worldY = gp.tileSize * 41;
 
@@ -46,15 +46,15 @@ public class AssetSetter {
         gp.obj[6].worldX = gp.tileSize * 7;
         gp.obj[6].worldY = gp.tileSize * 41;
 
-        gp.obj[7] = new objOrb(gp);
+        gp.obj[7] = new objOrb(gp);               // Extra orb at x = 3
         gp.obj[7].worldX = gp.tileSize * 3;
         gp.obj[7].worldY = gp.tileSize * 41;
 
-        gp.obj[8] = new objKey(gp);
+        gp.obj[8] = new objKey(gp);               // Key placed below the orb row
         gp.obj[8].worldX = gp.tileSize * 5;
         gp.obj[8].worldY = gp.tileSize * 43;
 
-        gp.obj[9] = new objOrb(gp);
+        gp.obj[9] = new objOrb(gp);               // Scattered orbs in other areas
         gp.obj[9].worldX = gp.tileSize * 3;
         gp.obj[9].worldY = gp.tileSize * 28;
 
@@ -62,7 +62,7 @@ public class AssetSetter {
         gp.obj[10].worldX = gp.tileSize * 9;
         gp.obj[10].worldY = gp.tileSize * 27;
 
-        gp.obj[11] = new objOrb(gp);
+        gp.obj[11] = new objOrb(gp);              // Vertical orb column at x = 6
         gp.obj[11].worldX = 6;
         gp.obj[11].worldY = gp.tileSize * 26;
 
@@ -78,7 +78,7 @@ public class AssetSetter {
         gp.obj[14].worldX = 6;
         gp.obj[14].worldY = gp.tileSize * 29;
 
-        gp.obj[15] = new objOrb(gp);
+        gp.obj[15] = new objOrb(gp);              // Second column slightly offset from tile 5
         gp.obj[15].worldX = gp.tileSize * 5 - 10;
         gp.obj[15].worldY = gp.tileSize * 26;
 
@@ -99,7 +99,7 @@ public class AssetSetter {
 
     public void setNPC() {
 
-        gp.npc[0] = new Prisoner1_NPC(gp);
+        gp.npc[0] = new Prisoner1_NPC(gp);        // Single NPC in the prison area
         gp.npc[0].worldX = gp.tileSize * 46;
         gp.npc[0].worldY = gp.tileSize * 45;
 
@@ -107,11 +107,11 @@ public class AssetSetter {
 
     public void setMonster() {
 
-        gp.monster[0] = new MON_Ghost(gp);
+        gp.monster[0] = new MON_Ghost(gp);        // First ghost patrol
         gp.monster[0].worldX = gp.tileSize * 30;
         gp.monster[0].worldY = gp.tileSize * 36;
 
-        gp.monster[1] = new MON_Ghost(gp);
+        gp.monster[1] = new MON_Ghost(gp);        // Second ghost nearby
         gp.monster[1].worldX = gp.tileSize * 30;
         gp.monster[1].worldY = gp.tileSize * 38;
 
