@@ -17,24 +17,25 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
-    public int hasKey = 0;
-    public int orbCount = 0;
+    public int hasKey = 0;      // Number of keys collected
+    public int orbCount = 0;    // Number of orbs collected
 
     public Player(GamePanel gp, KeyHandler keyH) {
 
         super(gp);
         this.keyH = keyH;
-        setDefaultValues();
-        getPlayerImage();
-        getPlayerAtk();
+        setDefaultValues();     // Set starting position and stats
+        getPlayerImage();       // Load walking sprites
+        getPlayerAtk();         // Load attack sprites
 
         solidArea = new Rectangle(14, 30, 20, 15);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        attackArea.width = 40;
+        attackArea.width = 40;  // Base attack hitbox size
         attackArea.height = 40;
 
+        // Player stays centered on screen
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
     }
@@ -47,7 +48,7 @@ public class Player extends Entity {
         animationSpeed = 7;
         direction = "down";
 
-        //PLAYER STATUS
+        // PLAYER STATUS
         maxLife = 5;
         life = maxLife;
     }
@@ -107,6 +108,7 @@ public class Player extends Entity {
 
         boolean isMoving = false;
 
+        // Handle input and movement state
         if (attacking) {
             attacking();
         } else if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed || keyH.shiftPressed) {
@@ -129,25 +131,26 @@ public class Player extends Entity {
             }
         }
 
-        //Check Tile Collision
+        // Check tile collision
         collisionOn = false;
         gp.cChecker.checkTile(this);
 
-        //Check Object Collision
+        // Check object collision and pickups
         int objIndex = gp.cChecker.checkObject(this, true);
         pickUpObject(objIndex);
 
-        //Check NPC collision
+        // Check NPC collision and interaction
         int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
         interactNPC(npcIndex);
 
-        //Check Event
+        // Check map events (triggers, etc.)
         gp.eHandler.CheckEvent();
 
-        //Check Monster Collision
+        // Check monster collision and damage
         int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
         contactMonster(monsterIndex);
 
+        // Sprint logic and stamina handling
         if (keyH.shiftPressed && isMoving && stamina > 0) {
             sprint = true;
             normalSpeed = sprintSpeed;
@@ -182,6 +185,7 @@ public class Player extends Entity {
             }
         }
 
+        // Apply movement if not blocked
         if (!collisionOn && isMoving) {
 
             switch (direction) {
@@ -202,6 +206,7 @@ public class Player extends Entity {
 
         }
 
+        // Walking animation frames
         if (isMoving) {
             spriteCounter++;
             int animationSpeed = 5;
@@ -220,6 +225,7 @@ public class Player extends Entity {
             }
         }
 
+        // Short invincibility window after damage
         if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 60) {
@@ -233,22 +239,22 @@ public class Player extends Entity {
 
         spriteCounter++;
 
-        // Change "<=" to ">" so it waits 5 frames before switching
+        // Wait 5 frames between attack animation steps
         if (spriteCounter > 5) {
 
-            // 1. Move to the next frame
+            // Move through attack frames and apply hitboxes
             if (spriteNum == 1) {
                 spriteNum = 2;
             } else if (spriteNum == 2) {
                 spriteNum = 3;
 
-                //Saves current worldX, worldy and solid area
+                // Save current worldX, worldY and solid area
                 int currentWorldX = worldX;
                 int currentWorldY = worldY;
                 int solidAreaWidth = solidArea.width;
                 int solidAreaHeight = solidArea.height;
 
-                //Adjust worldX, worldY and solid area for attackArea
+                // Adjust worldX, worldY and solid area for attackArea
                 switch (direction) {
                     case "up":
                         worldY -= attackArea.height;
@@ -265,15 +271,15 @@ public class Player extends Entity {
 
                 }
 
-                //Attack Area becomes Solid Area
+                // Attack area becomes solid area
                 solidArea.width = attackArea.width;
                 solidArea.height = attackArea.height;
 
-                //Checks Monster Collision
+                // Check monster collision for this attack frame
                 int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
                 damageMonster(monsterIndex);
 
-                //Rewrites original data after checking monster collision
+                // Restore original position and hitbox
                 worldX = currentWorldX;
                 worldY = currentWorldY;
                 solidArea.width = solidAreaWidth;
@@ -281,13 +287,12 @@ public class Player extends Entity {
             } else if (spriteNum == 3) {
                 spriteNum = 4;
 
-                //Saves current worldX, worldy and solid area
+                // Same collision logic for the next attack frame
                 int currentWorldX = worldX;
                 int currentWorldY = worldY;
                 int solidAreaWidth = solidArea.width;
                 int solidAreaHeight = solidArea.height;
 
-                //Adjust worldX, worldY and solid area for attackArea
                 switch (direction) {
                     case "up":
                         worldY -= attackArea.height;
@@ -305,15 +310,12 @@ public class Player extends Entity {
 
                 }
 
-                //Attack Area becomes Solid Area
                 solidArea.width = attackArea.width;
                 solidArea.height = attackArea.height;
 
-                //Checks Monster Collision
                 int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
                 damageMonster(monsterIndex);
 
-                //Rewrites original data after checking monster collision
                 worldX = currentWorldX;
                 worldY = currentWorldY;
                 solidArea.width = solidAreaWidth;
@@ -323,7 +325,7 @@ public class Player extends Entity {
             } else if (spriteNum == 5) {
                 spriteNum = 6;
             } else if (spriteNum == 6) {
-                spriteNum = 1;// Stop attacking AFTER frame 6 plays
+                spriteNum = 1; // Stop attacking after last frame
                 attacking = false;
             }
             spriteCounter = 0;
@@ -337,6 +339,7 @@ public class Player extends Entity {
 
             String objectName = gp.obj[i].name;
 
+            // Handle pickup behavior by object name
             switch (objectName) {
 
                 case "Key":
@@ -372,7 +375,7 @@ public class Player extends Entity {
 
                 if (i != 999) {
 
-                    // 1. Dialogue Branch
+                    // Start NPC dialogue and play sound
                     gp.gameState = gp.dialogueState;
                     gp.npc[i].speak();
                     gp.playSE(4);
@@ -381,6 +384,7 @@ public class Player extends Entity {
 
                 } else {
 
+                    // No NPC: treat as attack input
                     attacking = true;
                     gp.keyH.eKeyPressed = false;
                 }
@@ -393,6 +397,7 @@ public class Player extends Entity {
         if (i != 999) {
             if (!invincible) {
                 if (life > 0) {
+                    // Randomize which hurt sound plays
                     Random random = new Random();
                     int j = random.nextInt(3) + 1;
                     switch(j){
@@ -423,11 +428,13 @@ public class Player extends Entity {
                 gp.monster[i].life -= 1;
                 gp.monster[i].invincible = true;
 
+                // Trigger monster death when life runs out
                 if(gp.monster[i].life < 0){
                     gp.monster[i].dying = true;
                 }
             }
         } else {
+            // Attack missed everything
             gp.playSE(7);
         }
     }
@@ -437,6 +444,7 @@ public class Player extends Entity {
 //        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
 
         BufferedImage image = null;
+        // Choose sprite based on movement, direction, and attack state
         if (!sprint) {
             switch (direction) {
                 case "left":
@@ -595,6 +603,7 @@ public class Player extends Entity {
         }
         if (sprint) {
 
+            // Use running sprites when sprinting
             switch (direction) {
                 case "left":
                     if (spriteNum == 1) {
@@ -667,17 +676,18 @@ public class Player extends Entity {
 
         }
 
+        // Slight transparency when invincible
         if (invincible) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3F));
         }
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
-        //RESET ALPHA
+        // RESET ALPHA
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
 
         if (gp.keyH.checkDrawTime) {
 
-            // 1. Draw the Player's standard Solid Area (Red Box)
+            // Draw the player's solid collision box (red)
             g2.setColor(Color.red);
             g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
 
@@ -688,22 +698,14 @@ public class Player extends Entity {
                 int atkX = 0;
                 int atkY = 0;
 
-                // Attack hitbox dimensions are fixed (48x48)
+                // Attack hitbox dimensions are fixed by attackArea
                 int atkWidth = attackArea.width;
                 int atkHeight = attackArea.height;
 
-                // --- CALCULATE ATTACK AREA DRAWING POSITION ---
-
-                // This logic determines where the attack area starts relative
-                // to the player's screen position (screenX, screenY) based on
-                // the player's direction and the attackArea offset (-5, 30).
-
+                // Calculate attack box position relative to player
                 switch (direction) {
                     case "up":
-                        // Start X is adjusted by the offset X (-5)
                         atkX = screenX + attackArea.x;
-                        // Start Y is adjusted by the offset Y (30), MINUS the height of the attack box (48)
-                        // This moves the box up by 48, but starts the drawing at the offset Y (30) from the sprite origin.
                         atkY = screenY + attackArea.y - atkHeight;
                         break;
 
@@ -712,15 +714,11 @@ public class Player extends Entity {
                         atkX = screenX + attackArea.x;
 
                         // Start Y position is set to the bottom edge of the player's tile.
-                        // This prevents the attack box from overlapping the player.
                         atkY = screenY + gp.tileSize;
                         break;
 
                     case "left":
-                        // Start X is adjusted by the offset X (-5), MINUS the width of the attack box (48)
-                        // This places the box to the left, starting at X=-5 from the sprite origin.
                         atkX = screenX + attackArea.x - atkWidth;
-                        // Start Y is adjusted by the offset Y (30)
                         atkY = screenY + attackArea.y;
                         break;
 
@@ -730,11 +728,11 @@ public class Player extends Entity {
                         break;
                 }
 
-                // Draw the actual attack box (Green)
+                // Filled attack box (green with alpha)
                 g2.setColor(new Color(0, 255, 0, 150));
                 g2.fillRect(atkX, atkY, atkWidth, atkHeight);
 
-                // Draw the outline of the attack box
+                // Green outline of attack box
                 g2.setColor(Color.GREEN);
                 g2.drawRect(atkX, atkY, atkWidth, atkHeight);
             }
