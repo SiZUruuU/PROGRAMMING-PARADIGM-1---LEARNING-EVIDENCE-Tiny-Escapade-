@@ -12,10 +12,14 @@ public class objDoor extends Entity {
     public objDoor(GamePanel gp) {
         super(gp);
 
-        name = "Door";
-        down1 = setUp("/objects/door");
-        collision = true;
+        name = "Door";                    
+        // Used to identify this object in game logic
+        down1 = setUp("/objects/door");   
+        // Load the door sprite
+        collision = true;                 
+        // Make the door non‑walkable
 
+        // Define the door's collision area (only lower part is solid)
         solidArea.x = 0;
         solidArea.y = 16;
         solidArea.width = 48;
