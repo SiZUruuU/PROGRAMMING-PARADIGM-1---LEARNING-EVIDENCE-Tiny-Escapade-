@@ -12,12 +12,12 @@ public class Entity {
 
     GamePanel gp;
 
-    //World State
+    // World position and collision origin
     public int worldX, worldY;
     public int solidAreaDefaultX;
     public int solidAreaDefaultY;
 
-    //Player State
+    // Player movement and stamina
     public int normalSpeed;
     public int sprintSpeed;
     public int stamina = 100;
@@ -28,19 +28,19 @@ public class Entity {
     boolean alive = true;
     boolean dying = false;
 
-    //Entity Animation Variables
+    // Animation state
     public String direction = "down";
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public int animationSpeed;
 
-    //Counter
+    // Counters for timing logic
     public int invincibleCounter = 0;
     public int actionLockCounter;
     int dialogueIndex = 0;
     int dyingCounter = 0;
 
-    //Entity Buffered Images
+    // Sprites for movement and attacks
     public BufferedImage left1, left2, left3, left4, left5, left6;
     public BufferedImage right1, right2, right3, right4, right5, right6;
     public BufferedImage up1, up2, up3, up4, up5, up6;
@@ -52,6 +52,7 @@ public class Entity {
     public BufferedImage image;
     public BufferedImage image1, image2, image3, image4, image5, image6;
 
+    // Hitbox and attack box
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,10,0,0);
     public boolean collisionOn = false;
@@ -62,26 +63,28 @@ public class Entity {
     public boolean collision = false;
     public int type; //0 - player, 1 - npc, 2 - monster
 
-    //CHARACTER STATUS
+    // Basic stats
     public int maxLife;
     public int life;
 
     public Entity(GamePanel gp) {
-        this.gp = gp;
+        this.gp = gp; // Keep the reference to main game panel
     }
 
     public void setAction() {
+        // Overridden subclasses to define behavior
     }
 
     public void speak() {
 
         if (dialogues[dialogueIndex] == null) {
-            dialogueIndex = 0;
+            dialogueIndex = 0; // Loop back to first line
         }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         dialogueIndex++;
 
+        // Face the player while talking
         switch (gp.player.direction) {
 
             case "up":
@@ -102,8 +105,9 @@ public class Entity {
 
     public void update() {
 
-        setAction();
+        setAction(); // Let subclasses pick direction or action
 
+        // Reset and run collision checks
         collisionOn = false;
         gp.cChecker.checkTile(this);
         gp.cChecker.checkObject(this, false);
@@ -111,6 +115,7 @@ public class Entity {
         gp.cChecker.checkEntity(this, gp.monster);
         boolean contactPlayer = gp.cChecker.checkPlayer(this);
 
+        // Monster damaging the player
         if(this.type == 2 && contactPlayer){
             if(!gp.player.invincible){
                 if(life > 0) {
@@ -120,6 +125,7 @@ public class Entity {
             }
         }
 
+        // Move if no collision
         if (!collisionOn) {
             switch (direction) {
 
@@ -138,6 +144,7 @@ public class Entity {
             }
         }
 
+        // Simple walk animation
         spriteCounter++;
         int animationSpeed = 5;
         if (spriteCounter > animationSpeed) {
@@ -151,6 +158,7 @@ public class Entity {
             spriteCounter = 0;
         }
 
+        // Temporary invincibility timer
         if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 30) {
@@ -165,14 +173,17 @@ public class Entity {
 
         BufferedImage image = null;
 
+        // Convert world position to screen position
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
+        // Only draw if inside camera view
         if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
 
+            // Pick correct sprite for current direction/frame
             switch (direction) {
                 case "left":
                     if (spriteNum == 1) {image = left1;}
@@ -207,6 +218,7 @@ public class Entity {
                     break;
             }
 
+            // Fade entity when invincible or dying
             if (invincible) {
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F));
             }
@@ -217,6 +229,7 @@ public class Entity {
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
 
+            // Optional hitbox debug drawing
             if (gp.keyH.checkDrawTime) {
                 g2.setColor(Color.RED);
                 // We use drawRect (outline), not fillRect
@@ -234,6 +247,7 @@ public class Entity {
 
         dyingCounter++;
 
+        // Blink effect by toggling alpha
         if(dyingCounter <= 5){changeAlpha(g2, 0f);}
         if(dyingCounter > 5 && dyingCounter <= 10){changeAlpha(g2, 1f);}
         if(dyingCounter > 10 && dyingCounter <= 15){changeAlpha(g2, 0f);}
@@ -244,13 +258,14 @@ public class Entity {
         if(dyingCounter > 35 && dyingCounter <= 40){changeAlpha(g2, 1f);}
         if(dyingCounter > 40){
             dying = false;
-            alive = false;
+            alive = false; // Mark entity as dead
         }
 
     }
 
     public void changeAlpha(Graphics2D g2, float alphaValue){
 
+        // Helper to adjust drawing transparency
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
 
     }
@@ -262,6 +277,7 @@ public class Entity {
 
         try{
 
+            // Load and scale a square sprite
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
@@ -277,6 +293,7 @@ public class Entity {
         BufferedImage image = null;
 
         try{
+            // Load and scale to a custom size
             image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
             image = uTool.scaleImage(image, width, height);
 
