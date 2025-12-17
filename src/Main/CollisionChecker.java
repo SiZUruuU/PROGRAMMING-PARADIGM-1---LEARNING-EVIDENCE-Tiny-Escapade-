@@ -10,7 +10,7 @@ public class CollisionChecker {
 
     public CollisionChecker(GamePanel gp){
 
-        this.gp = gp;
+        this.gp = gp; // Keep a reference to the game panel
 
     }
 
@@ -29,6 +29,7 @@ public class CollisionChecker {
 
         int tileNum1, tileNum2;
 
+        // Predict movement one step ahead and test the tiles in that direction
         switch(entity.direction) {
             case "up":
                 entityTopRow = (entityTopWorldY - entity.normalSpeed) / gp.tileSize;
@@ -87,8 +88,7 @@ public class CollisionChecker {
         }
     }
 
-    // HELPER METHOD TO CHECK EXACT RECTANGLE INTERSECTION
-// Add this method inside CollisionChecker class
+    // Helper to test a tile's precise collision area against the entity
     public boolean checkSolid(Entity entity, int tileNum, int col, int row) {
 
         // If the tile isn't solid, ignore it
@@ -132,6 +132,7 @@ public class CollisionChecker {
 
         int index = 999;
 
+        // Loop through all world objects and test collision against the entity
         for(int i = 0; i < gp.obj.length; i++){
 
              if(gp.obj[i] != null){
@@ -144,6 +145,7 @@ public class CollisionChecker {
                 gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
                  gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
 
+                 // Move entity's hitbox in the direction it's heading
                  switch(entity.direction){
 
                      case "up": entity.solidArea.y -= entity.normalSpeed; break;
@@ -153,15 +155,17 @@ public class CollisionChecker {
 
                  }
 
+                 // Actual intersection test
                  if(entity.solidArea.intersects(gp.obj[i].solidArea)){
                      if(gp.obj[i].collision){
-                         entity.collisionOn = true;
+                         entity.collisionOn = true; // Solid objects block movement
                      }
                      if(player){
-                         index = i;
+                         index = i; // Let the player know which object it touched
                      }
                  }
 
+                 // Reset hitboxes back to their default offsets
                  entity.solidArea.x = entity.solidAreaDefaultX;
                  entity.solidArea.y = entity.solidAreaDefaultY;
                  gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
@@ -171,7 +175,7 @@ public class CollisionChecker {
         }
         return index;
     }
-    //NPC OR MONSTER COLLISION
+    // NPC or monster collision
     public int checkEntity(Entity entity, Entity[] target){
 
         int index = 999;
@@ -184,10 +188,11 @@ public class CollisionChecker {
                 entity.solidArea.x = entity.worldX + entity.solidArea.x;
                 entity.solidArea.y = entity.worldY + entity.solidArea.y;
 
-                //Get object solid position area
+                //Get target solid area position
                 target[i].solidArea.x = target[i].worldX + target[i].solidArea.x;
                 target[i].solidArea.y = target[i].worldY + target[i].solidArea.y;
 
+                // Predict next step based on direction
                 switch (entity.direction) {
 
                     case "up": entity.solidArea.y -= entity.normalSpeed; break;
@@ -200,10 +205,11 @@ public class CollisionChecker {
                 if(entity.solidArea.intersects(target[i].solidArea)){
                     if(target[i] != entity) {
                         entity.collisionOn = true;
-                        index = i;
+                        index = i; // Return which NPC/monster was hit
                     }
                 }
 
+                // Restore original hitboxes
                 entity.solidArea.x = entity.solidAreaDefaultX;
                 entity.solidArea.y = entity.solidAreaDefaultY;
                 target[i].solidArea.x = target[i].solidAreaDefaultX;
@@ -221,10 +227,11 @@ public class CollisionChecker {
         entity.solidArea.x = entity.worldX + entity.solidArea.x;
         entity.solidArea.y = entity.worldY + entity.solidArea.y;
 
-        //Get object solid position area
+        //Get player solid area position
         gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
         gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
 
+        // Predict the entity's next step toward the player
         switch(entity.direction) {
 
             case "up": entity.solidArea.y -= entity.normalSpeed; break;
@@ -233,11 +240,13 @@ public class CollisionChecker {
             case "right": entity.solidArea.x += entity.normalSpeed; break;
         }
 
+        // If they intersect, we mark contact and collision
         if(entity.solidArea.intersects(gp.player.solidArea)){
             entity.collisionOn = true;
             contactPlayer = true;
         }
 
+        // Reset hitboxes to defaults
         entity.solidArea.x = entity.solidAreaDefaultX;
         entity.solidArea.y = entity.solidAreaDefaultY;
         gp.player.solidArea.x = gp.player.solidAreaDefaultX;
