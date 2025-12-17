@@ -69,24 +69,24 @@ public class GamePanel extends JPanel implements Runnable {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
-        this.setDoubleBuffered(true);
-        this.addKeyListener(keyH);
-        this.setFocusable(true);
+        this.setDoubleBuffered(true);      // Reduce flicker
+        this.addKeyListener(keyH);         // Route keyboard input to KeyHandler
+        this.setFocusable(true);           // Make sure panel can receive key events
     }
 
     public void setupGame() {
 
-        aSetter.setObject();
-        aSetter.setNPC();
-        aSetter.setMonster();
+        aSetter.setObject();               // Place objects in the world
+        aSetter.setNPC();                  // Place NPCs in the world
+        aSetter.setMonster();              // Place monsters in the world
 //        playMusic(0);
-        gameState = titleState;
+        gameState = titleState;            // Start on title screen
     }
 
     public void startGameThread() {
 
         gameThread = new Thread(this);
-        gameThread.start();
+        gameThread.start();                // Kick off the main game loop
     }
 
     @Override
@@ -97,9 +97,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         while(gameThread != null) {
 
-            update();
-
-            repaint();
+            update();                      // Update game logic
+            repaint();                     // Request a redraw
 
 
             try {
@@ -126,7 +125,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
 
         if (gameState == guideState) {
-            guideTimer++;
+            guideTimer++;                  // Simple timer for guide pages
         }
 
 
@@ -139,6 +138,7 @@ public class GamePanel extends JPanel implements Runnable {
                     npc[i].update();
                 }
             }
+            //MONSTER
             for(int i=0; i < monster.length; i++){
                 if(monster[i] != null){
                     monster[i].update();
@@ -146,7 +146,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         if(gameState == pauseState){
-
+            // No updates while paused (game is frozen)
         }
 
     }
@@ -163,11 +163,11 @@ public class GamePanel extends JPanel implements Runnable {
         //TITLE SCREEN
 
         if(gameState == titleState){
-            ui.draw(g2);
+            ui.draw(g2);                   // Only draw UI when on title screen
         }else{
 
             //HIND TILES
-            tileM.draw(g2, false);
+            tileM.draw(g2, false);         // Draw background layer first
 
             //ADD ENTITY TO LIST
             entityList.add(player);
@@ -190,6 +190,7 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
+            // Sort entities by worldY so draw order matches depth
             Collections.sort(entityList, new Comparator<Entity>() {
                 @Override
                 public int compare(Entity e1, Entity e2) {
@@ -207,10 +208,10 @@ public class GamePanel extends JPanel implements Runnable {
             entityList.clear();
 
             //FORE TILES
-            tileM.draw(g2, true);
-            eHandler.draw(g2);
+            tileM.draw(g2, true);          // Draw foreground tiles (e.g., tree tops)
+            eHandler.draw(g2);             // Draw any event overlays
             //UI
-            ui.draw(g2);
+            ui.draw(g2);                   // Finally, draw HUD/UI
         }
 
         //Debug
