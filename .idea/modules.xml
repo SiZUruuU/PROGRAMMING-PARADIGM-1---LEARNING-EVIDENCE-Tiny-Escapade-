@@ -1,5 +1,7 @@
+<!-- This consists of the single 'Days Break' module -->
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <!-- The IDE uses this to load the .iml module file -->
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Days Break.iml" filepath="$PROJECT_DIR$/Days Break.iml" />
