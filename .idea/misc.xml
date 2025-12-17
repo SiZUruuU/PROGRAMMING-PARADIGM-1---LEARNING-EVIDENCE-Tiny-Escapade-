@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <!-- Project setup for Java -->
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="temurin-17" project-jdk-type="JavaSDK">
+    <!-- Compiled classes are written -->
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
