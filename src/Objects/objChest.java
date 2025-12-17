@@ -11,8 +11,11 @@ public class objChest extends Entity {
     public objChest(GamePanel gp){
         super(gp);
 
-        name = "Chest";
+        name = "Chest";                 
+        // Display name used elsewhere
         down1 = setUp("/objects/chest");
-        collision = true;
+        // Load the chest sprite
+        collision = true;              
+        // Player cannot walk through the chest
     }
 }
