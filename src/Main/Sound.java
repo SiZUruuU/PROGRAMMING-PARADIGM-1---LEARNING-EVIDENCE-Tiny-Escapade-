@@ -12,6 +12,7 @@ public class Sound {
 
     public Sound(){
 
+        // Preload all sound resource paths into an array
         soundURL[0] = getClass().getResource("/sound/Through Dark Gardens.wav");
         soundURL[1] = getClass().getResource("/sound/We Are Charlie Kirk Full Song Lyrics.wav");
         soundURL[2] = getClass().getResource("/sound/Dungeon Ambience.wav");
@@ -29,6 +30,7 @@ public class Sound {
     public void setFile(int i){
         try{
 
+            // Load audio data from the chosen URL into a Clip
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
@@ -38,14 +40,14 @@ public class Sound {
     }
 
     public void play() {
-        clip.start();
+        clip.start();               // Play once from current position
     }
 
     public void loop() {
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop indefinitely
     }
 
     public void stop() {
-        clip.stop();
+        clip.stop();                // Stop playback
     }
 }
