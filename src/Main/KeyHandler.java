@@ -1,4 +1,3 @@
-
 package Main;
 
 import java.awt.event.KeyEvent;
@@ -12,7 +11,7 @@ public class KeyHandler implements KeyListener{
     public boolean checkDrawTime = false; //debug boolean
 
     public KeyHandler(GamePanel gp){
-        this.gp = gp;
+        this.gp = gp; // Keep a reference to the main GamePanel
     }
 
     @Override
@@ -25,7 +24,7 @@ public class KeyHandler implements KeyListener{
 
         int code = e.getKeyCode();
 
-        //TITLE STATE
+        //TITLE STATE: navigate menu with W/S and select with ENTER
         if(gp.gameState == gp.titleState){
             if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
@@ -57,6 +56,7 @@ public class KeyHandler implements KeyListener{
         }
         else if (gp.gameState == gp.guideState) {
 
+            // GUIDE STATE: advance pages with ENTER after a delay
             if (code == KeyEvent.VK_ENTER) {
 
                 if(gp.guideTimer > 180) {
@@ -75,7 +75,7 @@ public class KeyHandler implements KeyListener{
             }
         }
 
-        //PLAY STATE
+        //PLAY STATE: movement, sprint, pause, interact, and debug toggle
         if(gp.gameState == gp.playState) {
             if (code == KeyEvent.VK_W) {
                 upPressed = true;
@@ -100,7 +100,7 @@ public class KeyHandler implements KeyListener{
                 eKeyPressed = true;
             }
 
-            //DEBUG
+            //DEBUG: toggle draw time overlay with T
             if (code == KeyEvent.VK_T) {
                 if (!checkDrawTime) {
                     checkDrawTime = true;
@@ -110,7 +110,7 @@ public class KeyHandler implements KeyListener{
             }
         }
 
-        //PAUSE STATE
+        //PAUSE STATE: unpause with P
         else if(gp.gameState == gp.pauseState){
 
             if (code == KeyEvent.VK_P) {
@@ -118,7 +118,7 @@ public class KeyHandler implements KeyListener{
             }
         }
 
-        //DIALOGUE STATE
+        //DIALOGUE STATE: close dialogue with E
         else if(gp.gameState == gp.dialogueState){
             if(code == KeyEvent.VK_E){
                 gp.gameState = gp.playState;
@@ -133,6 +133,7 @@ public class KeyHandler implements KeyListener{
 
         int code = e.getKeyCode();
 
+        // Reset movement/sprint flags when keys are released
         if(code == KeyEvent.VK_W) {
             upPressed = false;
         }
