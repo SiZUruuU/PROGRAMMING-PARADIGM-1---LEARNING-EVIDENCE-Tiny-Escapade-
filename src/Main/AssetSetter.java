@@ -9,20 +9,20 @@ import Objects.objOrb;
 
 public class AssetSetter {
 
-    GamePanel gp;
+    GamePanel gp; // Reference to main game panel
 
     public AssetSetter(GamePanel gp){
 
-        this.gp = gp;
+        this.gp = gp; // Store game panel for later use
     }
 
     public void setObject(){
 
-        gp.obj[0] = new objDoor(gp);
+        gp.obj[0] = new objDoor(gp); // Door at prison exit
         gp.obj[0].worldX = gp.tileSize * 22;
         gp.obj[0].worldY = gp.tileSize * 33;
 
-        gp.obj[1] = new objOrb(gp);
+        gp.obj[1] = new objOrb(gp); // Orbs forming a horizontal line
         gp.obj[1].worldX = gp.tileSize * 2;
         gp.obj[1].worldY = gp.tileSize * 41;
 
@@ -46,15 +46,15 @@ public class AssetSetter {
         gp.obj[6].worldX = gp.tileSize * 7;
         gp.obj[6].worldY = gp.tileSize * 41;
 
-        gp.obj[7] = new objOrb(gp);
+        gp.obj[7] = new objOrb(gp); // Overlapping orb at x = 3
         gp.obj[7].worldX = gp.tileSize * 3;
         gp.obj[7].worldY = gp.tileSize * 41;
 
-        gp.obj[8] = new objKey(gp);
+        gp.obj[8] = new objKey(gp); // Key near orb line
         gp.obj[8].worldX = gp.tileSize * 5;
         gp.obj[8].worldY = gp.tileSize * 43;
 
-        gp.obj[9] = new objOrb(gp);
+        gp.obj[9] = new objOrb(gp); // Orbs in mid map
         gp.obj[9].worldX = gp.tileSize * 3;
         gp.obj[9].worldY = gp.tileSize * 28;
 
@@ -62,7 +62,7 @@ public class AssetSetter {
         gp.obj[10].worldX = gp.tileSize * 9;
         gp.obj[10].worldY = gp.tileSize * 27;
 
-        gp.obj[11] = new objOrb(gp);
+        gp.obj[11] = new objOrb(gp); // Vertical orb column (fixed X)
         gp.obj[11].worldX = 6;
         gp.obj[11].worldY = gp.tileSize * 26;
 
@@ -78,7 +78,7 @@ public class AssetSetter {
         gp.obj[14].worldX = 6;
         gp.obj[14].worldY = gp.tileSize * 29;
 
-        gp.obj[15] = new objOrb(gp);
+        gp.obj[15] = new objOrb(gp); // Second column slightly left of tile 5
         gp.obj[15].worldX = gp.tileSize * 5 - 10;
         gp.obj[15].worldY = gp.tileSize * 26;
 
@@ -93,27 +93,24 @@ public class AssetSetter {
         gp.obj[18] = new objOrb(gp);
         gp.obj[18].worldX = gp.tileSize * 5 - 10;
         gp.obj[18].worldY = gp.tileSize * 29;
-
-
     }
 
     public void setNPC() {
 
-        gp.npc[0] = new Prisoner1_NPC(gp);
+        gp.npc[0] = new Prisoner1_NPC(gp); // Single prisoner NPC
         gp.npc[0].worldX = gp.tileSize * 46;
         gp.npc[0].worldY = gp.tileSize * 45;
-
     }
 
     public void setMonster() {
 
-        gp.monster[0] = new MON_Ghost(gp);
+        gp.monster[0] = new MON_Ghost(gp); // First ghost
         gp.monster[0].worldX = gp.tileSize * 30;
         gp.monster[0].worldY = gp.tileSize * 36;
 
-        gp.monster[1] = new MON_Ghost(gp);
+        gp.monster[1] = new MON_Ghost(gp); // Second ghost
         gp.monster[1].worldX = gp.tileSize * 30;
         gp.monster[1].worldY = gp.tileSize * 38;
-
     }
 }
+
