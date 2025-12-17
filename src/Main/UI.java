@@ -41,7 +41,7 @@ public class UI {
             e.printStackTrace();
         }
 
-        //CREATE HUD OBJECT
+        //CREATE HUD OBJECT (load heart/stamina bar sprites from helper entities)
         Entity heart = new objHealthBar(gp);
         healthBar1 = heart.image1;
         healthBar2 = heart.image2;
@@ -107,7 +107,7 @@ public class UI {
         int y = gp.tileSize / 9;
         int i = 0;
 
-        //DRAW HEALTH BAR
+        //DRAW HEALTH BAR sprite based on current life
         switch(gp.player.life){
 
             case 5:
@@ -145,7 +145,7 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(text, x, y);
 
-        //MENU
+        //MENU entries with selector arrow
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
         text = "Start Game";
         x = getXforCenteredText(text);
@@ -178,6 +178,7 @@ public class UI {
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
+        // Three guide pages: controls, sprint tutorial, win condition
         if(gp.guidePage == 0) {
             g2.setColor(Color.white);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
@@ -318,7 +319,7 @@ public class UI {
 
     public void drawPlayerStaminaBar(Graphics2D g2) {
 
-        //StaminaBar Position
+        //Stamina bar fill (yellow rectangle) on top of the bar sprite
         int x = gp.tileSize / 3 + 5;
         int y = gp.tileSize + 11;
         int width = gp.tileSize * 5 + 6;
@@ -341,7 +342,7 @@ public class UI {
         int y = gp.tileSize;
         int i = 0;
 
-        //DRAW STAMINA BAR
+        //DRAW STAMINA BAR sprite based on remaining stamina
         if(gp.player.stamina <= 100 && gp.player.stamina >= 51) {
             g2.drawImage(staminaBar1, x, y, null);
         }
@@ -367,6 +368,7 @@ public class UI {
         x += gp.tileSize;
         y += gp.tileSize;
 
+        // Draw each line of the current dialogue string
         for(String line : currentDialogue.split("\n")) {
             g2.drawString(line, x, y);
             y += 20;
@@ -375,6 +377,7 @@ public class UI {
 
     public void drawSubWindow(int x, int y, int width, int height){
 
+        // Semi‑transparent black box with a white border
         Color c = new Color(0,0,0, 200);
         g2.setColor(c);
         g2.fillRoundRect(x, y, width, height,35,35);
@@ -394,4 +397,3 @@ public class UI {
 
     }
     }
-
