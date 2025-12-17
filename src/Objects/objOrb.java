@@ -11,7 +11,9 @@ public class objOrb extends Entity {
     public objOrb(GamePanel gp){
         super(gp);
 
-        name = "Orb";
-        down1 = setUp("/orb/orb");
+        name = "Orb";             
+        // Used for pickup logic (orb counter)
+        down1 = setUp("/orb/orb"); 
+        // Load the orb sprite
     }
 }
