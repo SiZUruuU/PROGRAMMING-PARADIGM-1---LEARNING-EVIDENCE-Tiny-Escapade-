@@ -1,6 +1,6 @@
-<component name="InspectionProjectProfileManager">
-  <profile version="1.0">
-    <option name="myName" value="Project Default" />
-    <inspection_tool class="RandomDoubleForRandomInteger" enabled="true" level="WARNING" enabled_by_default="true" />
+<component name="InspectionProjectProfileManager"> <!-- Container for project inspections -->
+  <profile version="1.0"> <!-- Single inspection profile -->
+    <option name="myName" value="Project Default" /> <!-- Profile display name -->
+    <inspection_tool class="RandomDoubleForRandomInteger" enabled="true" level="WARNING" enabled_by_default="true" /> <!-- Enable misuse-of-Random.nextDouble() warning -->
   </profile>
 </component>
