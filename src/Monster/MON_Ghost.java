@@ -10,13 +10,14 @@ public class MON_Ghost extends Entity {
     public MON_Ghost(GamePanel gp) {
         super(gp);
 
-        type = 2;
+        type = 2;                 // Mark this entity as a monster
 
         name = "Ghost";
         normalSpeed = 1;
         maxLife = 3;
         life = maxLife;
 
+        // Define the ghost's collision box
         solidArea.x = 3;
         solidArea.y = 10;
         solidArea.width = 40;
@@ -24,7 +25,7 @@ public class MON_Ghost extends Entity {
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        getImage();
+        getImage();               // Load ghost sprites
     }
 
     public void getImage() {
@@ -37,12 +38,13 @@ public class MON_Ghost extends Entity {
 
     public void setAction(){
 
-        actionLockCounter++;
+        actionLockCounter++;      // Count frames until next direction change
 
         if (actionLockCounter == 120) {
             Random random = new Random();
             int i = random.nextInt(100) + 1;
 
+            // Pick a random direction every 120 ticks
             if (i <= 25) {
                 direction = "up";
             }
