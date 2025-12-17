@@ -12,8 +12,9 @@ public class objKey extends Entity{
         public objKey(GamePanel gp) {
             super(gp);
 
-            name = "Key";
+            name = "Key";                 
+                // Used to detect key pickups
             down1 = setUp("/objects/key");
-
+                // Load key sprite
         }
 }
