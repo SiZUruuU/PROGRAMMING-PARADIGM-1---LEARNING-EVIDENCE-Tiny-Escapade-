@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Entity npc[] = new Entity[100];
     public Entity monster[] = new Entity[100];
     ArrayList<Entity> entityList = new ArrayList<>();
-    public int killCount = 49;
+    public int killCount = 0;
 
     //GAME STATE
     public int gameState;
@@ -163,7 +163,6 @@ public class GamePanel extends JPanel implements Runnable {
         if(killCount == 50){
             gameState = endGameState;
             stopMusic();
-            playMusic(18);
         }
     }
     // 2. Create the Retry Method (Resets Game)

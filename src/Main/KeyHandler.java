@@ -181,6 +181,7 @@ public class KeyHandler implements KeyListener{
                 // WIN LOGIC: Go back to title
                 if (gp.ui.commandNum == 0) {
                     gp.gameState = gp.titleState;
+                    gp.stopMusic();
                     gp.restart(); // Reset player HP/Pos for next game
                 }
             }
