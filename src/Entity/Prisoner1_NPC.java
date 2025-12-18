@@ -17,7 +17,7 @@ public class Prisoner1_NPC extends Entity{
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        direction = "down";
+        direction = "left";
         normalSpeed = 1;
 
         getImage();
@@ -40,6 +40,8 @@ public class Prisoner1_NPC extends Entity{
         right4 = setUp("/npc/right3");
         right5 = setUp("/npc/right4");
         right6 = setUp("/npc/right5");
+
+        down1 = setUp("/npc/right0");
 
     }
 

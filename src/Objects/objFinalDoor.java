@@ -10,7 +10,9 @@ public class objFinalDoor extends Entity {
         super(gp);
 
         name = "Final Door";
-        down1 = setUp("/objects/door");
+        direction = "still";
+
+        still = setUp("/objects/door");
         collision = true;
 
         solidArea.x = 0;

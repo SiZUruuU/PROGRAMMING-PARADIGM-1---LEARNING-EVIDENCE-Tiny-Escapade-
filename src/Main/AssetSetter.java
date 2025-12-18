@@ -507,23 +507,23 @@ public class AssetSetter {
 
         gp.monster[52] = new MON_Ghost(gp);
         gp.monster[52].worldX = gp.tileSize * 31;
-        gp.monster[52].worldY = gp.tileSize * 37;
+        gp.monster[52].worldY = gp.tileSize * 38;
 
         gp.monster[53] = new MON_Ghost(gp);
         gp.monster[53].worldX = gp.tileSize * 33;
-        gp.monster[53].worldY = gp.tileSize * 37;
+        gp.monster[53].worldY = gp.tileSize * 38;
 
         gp.monster[54] = new MON_Ghost(gp);
         gp.monster[54].worldX = gp.tileSize * 35;
-        gp.monster[54].worldY = gp.tileSize * 37;
+        gp.monster[54].worldY = gp.tileSize * 38;
 
         gp.monster[55] = new MON_Ghost(gp);
         gp.monster[55].worldX = gp.tileSize * 35;
-        gp.monster[55].worldY = gp.tileSize * 37;
+        gp.monster[55].worldY = gp.tileSize * 38;
 
         gp.monster[56] = new MON_Ghost(gp);
         gp.monster[56].worldX = gp.tileSize * 29;
-        gp.monster[56].worldY = gp.tileSize * 38;
+        gp.monster[56].worldY = gp.tileSize * 39;
 
         gp.monster[57] = new MON_Ghost(gp);
         gp.monster[57].worldX = gp.tileSize * 31;

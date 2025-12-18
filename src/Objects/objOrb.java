@@ -11,7 +11,8 @@ public class objOrb extends Entity {
     public objOrb(GamePanel gp){
         super(gp);
 
+        direction = "still";
         name = "Orb";
-        down1 = setUp("/orb/orb");
+        still = setUp("/orb/orb");
     }
 }

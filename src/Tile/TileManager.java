@@ -52,7 +52,7 @@ public class TileManager {
         setUp(0, "80", false, false, 0, 0, 16, 16);
         setUp(1, "1", true,true,0, 40, 48, 16);
         setUp(2, "2", true,true,0, 40, 48, 10);
-        setUp(3, "3", true,true,0, 40, 48, 10);
+        setUp(3, "3", false,true,0, 40, 48, 10);
         setUp(4, "4", true,true,0, 0, 48, 48);
         setUp(5, "5", true,true,0, 0, 16, 16);
         setUp(6, "6", true,true,0, 0, 16, 16);

@@ -13,8 +13,8 @@ public class objHealingWisp extends Entity {
         super(gp);
 
         name = "Wisp";
-        down1 = setUp("/healing wis/0");
-        down2 = setUp("/healing wis/1");
+        direction = "still";
+        still = setUp("/healing wis/0");
         collision = false;
 
         solidArea.x = 18;

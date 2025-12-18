@@ -221,7 +221,12 @@ public class Entity {
                     break;
 
                 case "down":
-                    image = down1;
+                    if (spriteNum == 1) {image = left1;}
+                    if (spriteNum == 2) {image = left2;}
+                    if (spriteNum == 3) {image = left3;}
+                    if (spriteNum == 4) {image = left4;}
+                    if (spriteNum == 5) {image = left5;}
+                    if (spriteNum == 6) {image = left6;}
                     break;
 
                 case "up":

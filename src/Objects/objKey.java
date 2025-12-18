@@ -12,8 +12,10 @@ public class objKey extends Entity{
         public objKey(GamePanel gp) {
             super(gp);
 
+            direction = "still";
+
             name = "Key";
-            down1 = setUp("/objects/key");
+            still = setUp("/objects/key");
 
         }
 }

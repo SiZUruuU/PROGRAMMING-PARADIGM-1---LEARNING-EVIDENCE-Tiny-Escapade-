@@ -83,6 +83,12 @@ public class Player extends Entity {
         rightrun5 = setUp("/player/rightrun4");
         rightrun6 = setUp("/player/rightrun5");
 
+        up1 = setUp("/player/front");
+        up2 = setUp("/player/walk");
+        up3 = setUp("/player/walk(1)");
+        up4 = setUp("/player/walk(2)");
+        up5 = setUp("/player/walk(3)");
+
 
     }
 
@@ -547,153 +553,75 @@ public class Player extends Entity {
             switch (direction) {
                 case "left":
                     if (!attacking) {
-                        if (spriteNum == 1) {
-                            image = left1;
-                        }
-                        if (spriteNum == 2) {
-                            image = left2;
-                        }
-                        if (spriteNum == 3) {
-                            image = left3;
-                        }
-                        if (spriteNum == 4) {
-                            image = left4;
-                        }
-                        if (spriteNum == 5) {
-                            image = left5;
-                        }
-                        if (spriteNum == 6) {
-                            image = left6;
-                        }
+                        if (spriteNum == 1) {image = left1;}
+                        if (spriteNum == 2) {image = left2;}
+                        if (spriteNum == 3) {image = left3;}
+                        if (spriteNum == 4) {image = left4;}
+                        if (spriteNum == 5) {image = left5;}
+                        if (spriteNum == 6) {image = left6;}
                     } else if (attacking) {
-                        if (spriteNum == 1) {
-                            image = atkleft1;
-                        }
-                        if (spriteNum == 2) {
-                            image = atkleft2;
-                        }
-                        if (spriteNum == 3) {
-                            image = atkleft3;
-                        }
-                        if (spriteNum == 4) {
-                            image = atkleft4;
-                        }
-                        if (spriteNum == 5) {
-                            image = atkleft5;
-                        }
-                        if (spriteNum == 6) {
-                            image = atkleft6;
-                        }
+                        if (spriteNum == 1) {image = atkleft1;}
+                        if (spriteNum == 2) {image = atkleft2;}
+                        if (spriteNum == 3) {image = atkleft3;}
+                        if (spriteNum == 4) {image = atkleft4;}
+                        if (spriteNum == 5) {image = atkleft5;}
+                        if (spriteNum == 6) {image = atkleft6;}
                     }
                     break;
 
 
                 case "right":
                     if (!attacking) {
-                        if (spriteNum == 1) {
-                            image = right1;
-                        }
-                        if (spriteNum == 2) {
-                            image = right2;
-                        }
-                        if (spriteNum == 3) {
-                            image = right3;
-                        }
-                        if (spriteNum == 4) {
-                            image = right4;
-                        }
-                        if (spriteNum == 5) {
-                            image = right5;
-                        }
-                        if (spriteNum == 6) {
-                            image = right6;
-                        }
+                        if (spriteNum == 1) {image = right1;}
+                        if (spriteNum == 2) {image = right2;}
+                        if (spriteNum == 3) {image = right3;}
+                        if (spriteNum == 4) {image = right4;}
+                        if (spriteNum == 5) {image = right5;}
+                        if (spriteNum == 6) {image = right6;}
                     } else if (attacking) {
-                        if (spriteNum == 1) {
-                            image = atkright1;
-                        }
-                        if (spriteNum == 2) {
-                            image = atkright2;
-                        }
-                        if (spriteNum == 3) {
-                            image = atkright3;
-                        }
-                        if (spriteNum == 4) {
-                            image = atkright4;
-                        }
-                        if (spriteNum == 5) {
-                            image = atkright5;
-                        }
-                        if (spriteNum == 6) {
-                            image = atkright6;
-                        }
+                        if (spriteNum == 1) {image = atkright1;}
+                        if (spriteNum == 2) {image = atkright2;}
+                        if (spriteNum == 3) {image = atkright3;}
+                        if (spriteNum == 4) {image = atkright4;}
+                        if (spriteNum == 5) {image = atkright5;}
+                        if (spriteNum == 6) {image = atkright6;}
                     }
                     break;
 
                 case "down":
-                    if (!attacking) {
-                        image = right2;
-                    } else if (attacking) {
-                        if (spriteNum == 1) {
-                            image = atkright1;
-                        }
-                        if (spriteNum == 2) {
-                            image = atkright2;
-                        }
-                        if (spriteNum == 3) {
-                            image = atkright3;
-                        }
-                        if (spriteNum == 4) {
-                            image = atkright4;
-                        }
-                        if (spriteNum == 5) {
-                            image = atkright5;
-                        }
-                        if (spriteNum == 6) {
-                            image = atkright6;
-                        }
+                    if (!attacking){
+                        if (spriteNum == 1) {image = right1;}
+                        if (spriteNum == 2) {image = right2;}
+                        if (spriteNum == 3) {image = right3;}
+                        if (spriteNum == 4) {image = right4;}
+                        if (spriteNum == 5) {image = right5;}
+                        if (spriteNum == 6) {image = right6;}
+                    }
+                        else if (attacking) {
+                        if (spriteNum == 1) {image = atkright1;}
+                        if (spriteNum == 2) {image = atkright2;}
+                        if (spriteNum == 3) {image = atkright3;}
+                        if (spriteNum == 4) {image = atkright4;}
+                        if (spriteNum == 5) {image = atkright5;}
+                        if (spriteNum == 6) {image = atkright6;}
                     }
                     break;
 
                 case "up":
                     if (!attacking) {
-                        if (spriteNum == 1) {
-                            image = right1;
-                        }
-                        if (spriteNum == 2) {
-                            image = right2;
-                        }
-                        if (spriteNum == 3) {
-                            image = right3;
-                        }
-                        if (spriteNum == 4) {
-                            image = right4;
-                        }
-                        if (spriteNum == 5) {
-                            image = right5;
-                        }
-                        if (spriteNum == 6) {
-                            image = right6;
-                        }
+                        if (spriteNum == 1) {image = right1;}
+                        if (spriteNum == 2) {image = right2;}
+                        if (spriteNum == 3) {image = right3;}
+                        if (spriteNum == 4) {image = right4;}
+                        if (spriteNum == 5) {image = right5;}
+                        if (spriteNum == 6) {image = right6;}
                     } else if (attacking) {
-                        if (spriteNum == 1) {
-                            image = atkleft1;
-                        }
-                        if (spriteNum == 2) {
-                            image = atkleft2;
-                        }
-                        if (spriteNum == 3) {
-                            image = atkleft3;
-                        }
-                        if (spriteNum == 4) {
-                            image = atkleft4;
-                        }
-                        if (spriteNum == 5) {
-                            image = atkleft5;
-                        }
-                        if (spriteNum == 6) {
-                            image = atkleft6;
-                        }
+                        if (spriteNum == 1) {image = atkleft1;}
+                        if (spriteNum == 2) {image = atkleft2;}
+                        if (spriteNum == 3) {image = atkleft3;}
+                        if (spriteNum == 4) {image = atkleft4;}
+                        if (spriteNum == 5) {image = atkleft5;}
+                        if (spriteNum == 6) {image = atkleft6;}
                     }
                     break;
             }

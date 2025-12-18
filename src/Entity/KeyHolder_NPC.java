@@ -59,14 +59,14 @@ public class KeyHolder_NPC extends Entity{
         else if(gp.player.orbCount < 30){
             gp.ui.currentDialogue = dialogues[dialogueIndex = 2];
         }
-        if(gp.player.hasKey == 3){
+        if(gp.player.hasKey >= 3){
             enoughKey = true;
             gp.ui.currentDialogue = dialogues[dialogueIndex = 4];
         }
         else if(gp.player.hasKey < 3){
             gp.ui.currentDialogue = dialogues[dialogueIndex = 1];
         }
-        if(gp.killCount == 10){
+        if(gp.killCount >= 10){
             enoughSoul = true;
             gp.ui.currentDialogue = dialogues[dialogueIndex = 3];
         }
