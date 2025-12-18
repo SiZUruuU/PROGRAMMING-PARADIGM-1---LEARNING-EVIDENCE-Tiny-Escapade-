@@ -10,15 +10,17 @@ Members and Contributions:
   -Initial Code
 
 2. Michael Tonyo B. Leonor
+   -Sprite Creator
 
 3. Keane Fernandez
    -User Tester
+   -Debugger
    -Audio and SFX
    -Documentation
 
 4. Joshua Rafael Fajanela
    -Sprite Creator
-   -Documentation
+
 
 Tools and Assistance:
 
