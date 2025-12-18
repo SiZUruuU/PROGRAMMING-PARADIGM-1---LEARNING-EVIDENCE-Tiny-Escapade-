@@ -9,7 +9,7 @@ Members and Contributions:
   -Some of the Art
   -Initial Code
 
-2. Michael Tonyo Leonor B. Leonor
+2. Michael Tonyo B. Leonor
 
 3. Keane Fernandez
    -User Tester
