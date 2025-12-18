@@ -17,15 +17,16 @@ public class KeyHandler implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        //Method has no use but is required by KeyListener
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
 
-        int code = e.getKeyCode();
+        int code = e.getKeyCode(); //Code for Pressed Key
 
         //TITLE STATE
+        //Title Navigation
         if (gp.gameState == gp.titleState) {
             if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
@@ -40,6 +41,7 @@ public class KeyHandler implements KeyListener{
                     gp.ui.commandNum = 0;
                 }
             }
+            //For Title Screen Options
             if (code == KeyEvent.VK_ENTER) {
                 if (gp.ui.commandNum == 0) {
                     gp.gameState = gp.guideState;
@@ -59,7 +61,7 @@ public class KeyHandler implements KeyListener{
         } else if (gp.gameState == gp.guideState) {
 
             if (code == KeyEvent.VK_ENTER) {
-
+            //For Page Flipping in Guide State
                 if (gp.guideTimer > 180) {
 
                     if (gp.guidePage == 0) {
@@ -69,6 +71,9 @@ public class KeyHandler implements KeyListener{
                         gp.guidePage = 2;
                         gp.guideTimer = 0;
                     } else if (gp.guidePage == 2) {
+                        gp.guidePage = 3;
+                        gp.guideTimer = 0;
+                    }else if (gp.guidePage == 3) {
                         gp.gameState = gp.playState;
                         gp.playMusic(2);
                     }
@@ -78,6 +83,7 @@ public class KeyHandler implements KeyListener{
 
         //PLAY STATE
         if (gp.gameState == gp.playState) {
+            //For Player Movement
             if (code == KeyEvent.VK_W) {
                 upPressed = true;
             }
@@ -145,12 +151,10 @@ public class KeyHandler implements KeyListener{
 
     public void gameOverState(int code) {
 
-        // Navigate Up
+        // Navigation
         if (code == KeyEvent.VK_W) {
             gp.ui.commandNum--;
             if (gp.ui.commandNum < 0) {
-                // If we are winning, we only have 1 option (Back to title), so reset to 0
-                // If we are losing, we have 2 options, reset to 1
                 if(gp.gameState == gp.endGameState) {
                     gp.ui.commandNum = 0;
                 } else {
@@ -159,15 +163,12 @@ public class KeyHandler implements KeyListener{
             }
         }
 
-        // Navigate Down
         if (code == KeyEvent.VK_S) {
             gp.ui.commandNum++;
 
             if(gp.gameState == gp.endGameState) {
-                // Only 1 option in win screen, keep it at 0
                 gp.ui.commandNum = 0;
             } else {
-                // 2 options in lose screen
                 if (gp.ui.commandNum > 1) {
                     gp.ui.commandNum = 0;
                 }

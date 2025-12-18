@@ -35,6 +35,7 @@ public class MainClass {
                 gamePanel.setupGame();
                 gamePanel.startGameThread();  //Calls "startGameThreat" method from GamePanel class
             }else {
+                //Exits code when user input doesn't match requirement
                 System.out.print("Very well...");
                 System.exit(0);
             }

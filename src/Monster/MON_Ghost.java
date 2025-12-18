@@ -17,6 +17,7 @@ public class MON_Ghost extends Entity {
         maxLife = 3;
         life = maxLife;
 
+        //Collision Box of Ghost
         solidArea.x = 3;
         solidArea.y = 10;
         solidArea.width = 40;
@@ -29,6 +30,8 @@ public class MON_Ghost extends Entity {
 
     public void getImage() {
 
+        //Imports Ghost Images
+
         left1 = setUp("/Ghost/left");
         right1 = setUp("/Ghost/right");
         up1 = setUp("/Ghost/left");
@@ -36,6 +39,8 @@ public class MON_Ghost extends Entity {
     }
 
     public void setAction(){
+
+        //Sets random npc path
 
         actionLockCounter++;
 

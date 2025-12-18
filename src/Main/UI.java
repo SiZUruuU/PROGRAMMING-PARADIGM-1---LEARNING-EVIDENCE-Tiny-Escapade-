@@ -30,8 +30,8 @@ public class UI {
     public UI(GamePanel gp) {
         this.gp = gp;
 
-
         try {
+            //Imports Font
             InputStream is = getClass().getResourceAsStream("/res/font/x12y16pxMaruMonica.ttf");
             maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
             is = getClass().getResourceAsStream("/res/font/Purisa Bold.ttf");
@@ -42,7 +42,7 @@ public class UI {
             e.printStackTrace();
         }
 
-        //CREATE HUD OBJECT
+        //Creates healthBar object
         Entity heart = new objHealthBar(gp);
         healthBar1 = heart.image1;
         healthBar2 = heart.image2;
@@ -50,6 +50,7 @@ public class UI {
         healthBar4 = heart.image4;
         healthBar5 = heart.image5;
 
+        //Creates staminaBar object
         Entity staminaBar = new objStaminaBar(gp);
         staminaBar1 = staminaBar.image1;
         staminaBar2 = staminaBar.image2;
@@ -65,7 +66,6 @@ public class UI {
     public void draw(Graphics2D g2){
 
         this.g2 =  g2;
-
         g2.setFont(maruMonica);
         g2.setColor(Color.white);
 
@@ -117,8 +117,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
 
         if (gp.gameState == gp.endGameState) {
-            // === WINNING SCREEN ===
-
+            // WINNING SCREEN
             text = "TRIAL COMPLETE";
             g2.setColor(Color.black); // Shadow
             x = getXforCenteredText(text);
@@ -140,13 +139,14 @@ public class UI {
         }
         else {
 
+            //DEATH SCREEN
             text = "GAME OVER";
-            g2.setColor(Color.black); // Shadow
+            g2.setColor(Color.black);
             x = getXforCenteredText(text);
             y = gp.tileSize * 4;
             g2.drawString(text, x, y);
 
-            g2.setColor(Color.white); // Main Color
+            g2.setColor(Color.white);
             g2.drawString(text, x-4, y-4);
 
             // Lose Menu Options
@@ -197,6 +197,7 @@ public class UI {
     }
 
     public void drawMessage() {
+        //Adjusts Alpha Message
         if (messageOn) {
 
             messageCounter++;
@@ -245,6 +246,8 @@ public class UI {
 
     public void drawTitleScreen(){
 
+        //DRAW TITLE SCREEN
+
         g2.setColor(new Color(90,90,100));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
@@ -290,6 +293,8 @@ public class UI {
     }
 
     public void drawGuideScreen(){
+
+        //DRAW GUIDE SCREEN
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
@@ -386,7 +391,7 @@ public class UI {
             g2.drawString(text, x, y);
 
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 25F));
-            text = "Collect orbs, keys to unlock the main room! (Its that simple)";
+            text = "Collect orbs, keys to unlock the main room, \nand complete the TRIAL";
             x = getXforCenteredText(text);
             y = gp.tileSize * 5;
             g2.drawString(text, x, y);
@@ -399,6 +404,46 @@ public class UI {
 
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
             text = "Do you best to avoid getting hurt!";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 8;
+            g2.drawString(text, x, y);
+        }
+        else if(gp.guidePage == 3){
+
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
+
+            String text = "EXTRAS";
+            int x = getXforCenteredText(text);
+            int y = gp.tileSize * 2;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 25F));
+            text = "Talk to the NPC in the middle and complete his tasks!";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 4;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "1st - Collect at least 30 orbs";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 5;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "2nd - Collect 3 Keys";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 6;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "3rd - Kill at least 10 Ghosts";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 7;
+            g2.drawString(text, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+            text = "Find the Wisp to heal and save your progress! (1 kill = 1 heal)";
             x = getXforCenteredText(text);
             y = gp.tileSize * 8;
             g2.drawString(text, x, y);
@@ -421,6 +466,8 @@ public class UI {
     }
 
     public void drawPlayerFloatingText() {
+
+        //DRAW PLAYER RANDOM DIALOGUE TEXT
 
         if (gp.player.floatingTextOn) {
 
@@ -445,6 +492,8 @@ public class UI {
 
     public void drawPauseScreen(){
 
+        //DRAW PAUSE SCREEN
+
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
         String text = "PAUSED";
         int x = getXforCenteredText(text);
@@ -454,7 +503,7 @@ public class UI {
     }
 
     public void drawPlayerStaminaBar(Graphics2D g2) {
-
+        //Draw Stamina Rect that show stamina count
         //StaminaBar Position
         int x = gp.tileSize / 3 + 5;
         int y = gp.tileSize + 11;
@@ -464,15 +513,15 @@ public class UI {
         double oneScale = (double)width / ((double) gp.player.maxStamina / 2);
         double currentBarWidth = ((oneScale * gp.player.stamina) / 4) - 10;
 
-
         if(currentBarWidth < 0) { currentBarWidth = 0; }
-
 
         g2.setColor(new Color(255, 255, 0));
         g2.fillRect(x, y, (int)currentBarWidth, height);
     }
 
     public void drawStaminaBar() {
+
+        //DRAW STAMINA BAR OBJECT
 
         int x = gp.tileSize / 3;
         int y = gp.tileSize;

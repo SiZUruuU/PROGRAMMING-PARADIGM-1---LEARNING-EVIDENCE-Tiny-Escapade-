@@ -12,6 +12,8 @@ public class Sound {
 
     public Sound(){
 
+        //Imports Sound Files (.wav)
+
         soundURL[0] = getClass().getResource("/res/sound/Through Dark Gardens.wav");
         soundURL[1] = getClass().getResource("/res/sound/We Are Charlie Kirk Full Song Lyrics.wav");
         soundURL[2] = getClass().getResource("/res/sound/Dungeon Ambience.wav");

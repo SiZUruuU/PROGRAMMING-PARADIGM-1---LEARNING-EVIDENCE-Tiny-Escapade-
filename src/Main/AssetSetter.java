@@ -17,6 +17,8 @@ public class AssetSetter {
 
     public void setObject(){
 
+        //Creates Object in Game
+
         gp.obj[0] = new objFinalDoor(gp);
         gp.obj[0].worldX = gp.tileSize * 22;
         gp.obj[0].worldY = gp.tileSize * 33;
@@ -273,6 +275,8 @@ public class AssetSetter {
 
     public void setNPC() {
 
+        //Creates NPC in Game
+
         gp.npc[0] = new Prisoner1_NPC(gp);
         gp.npc[0].worldX = gp.tileSize * 46;
         gp.npc[0].worldY = gp.tileSize * 45;
@@ -289,6 +293,8 @@ public class AssetSetter {
     }
 
     public void setMonster() {
+
+        //Creates Monster in Game
 
         gp.monster[0] = new MON_Ghost(gp);
         gp.monster[0].worldX = gp.tileSize * 30;
@@ -348,6 +354,8 @@ public class AssetSetter {
     }
 
     public void finalStage_Monster(){
+
+        //Creates more Monster for Final Stage
 
         gp.monster[14] = new MON_Ghost(gp);
         gp.monster[14].worldX = gp.tileSize * 3;

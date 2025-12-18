@@ -15,6 +15,8 @@ public class EntityGenerator {
 
     public Entity getObject(String itemName){
 
+        //Entity Generation for Save and Load
+
         Entity obj = null;
 
         switch(itemName){

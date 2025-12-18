@@ -35,10 +35,8 @@ public class CollisionChecker {
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
 
-                // We must check if these tiles are actually solid
                 if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 
-                    // If we found a solid tile, we now check exact collision rectangle intersection
                     if(checkSolid(entity, tileNum1, entityLeftCol, entityTopRow) ||
                             checkSolid(entity, tileNum2, entityRightCol, entityTopRow)) {
                         entity.collisionOn = true;
@@ -87,11 +85,9 @@ public class CollisionChecker {
         }
     }
 
-    // HELPER METHOD TO CHECK EXACT RECTANGLE INTERSECTION
-// Add this method inside CollisionChecker class
     public boolean checkSolid(Entity entity, int tileNum, int col, int row) {
 
-        // If the tile isn't solid, ignore it
+        // Ignore Tile if not solid
         if(gp.tileM.tile[tileNum].collision == false) {
             return false;
         }
@@ -129,6 +125,8 @@ public class CollisionChecker {
     }
 
     public int checkObject(Entity entity, boolean player){
+
+        //Checks Object Collision
 
         int index = 999;
 
@@ -215,6 +213,7 @@ public class CollisionChecker {
 
     public boolean checkPlayer(Entity entity){
 
+        //Checks Player Collision
         boolean contactPlayer = false;
 
         //Get entity solid area position
@@ -227,6 +226,7 @@ public class CollisionChecker {
 
         switch(entity.direction) {
 
+            //Directional Collision
             case "up": entity.solidArea.y -= entity.normalSpeed; break;
             case "down": entity.solidArea.y += entity.normalSpeed; break;
             case "left": entity.solidArea.x -= entity.normalSpeed; break;

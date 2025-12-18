@@ -24,7 +24,6 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow; //576px
 
     //World settings
-
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
 
@@ -82,15 +81,16 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
 
+        //Game Setup
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
-//        playMusic(0);
         gameState = titleState;
     }
 
     public void startGameThread() {
 
+        //Starts Thread
         gameThread = new Thread(this);
         gameThread.start();
     }
@@ -132,6 +132,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
 
         if (gameState == guideState) {
+            //Starts Guide State Counter for Page Flipping
             guideTimer++;
         }
 
@@ -142,32 +143,34 @@ public class GamePanel extends JPanel implements Runnable {
             //NPC
             for(int i = 0; i < npc.length; i++){
                 if(npc[i] != null){
-                    npc[i].update();
+                    npc[i].update(); //If NPC index contains data, that index gets updated into game
                 }
             }
             for(int i=0; i < monster.length; i++){
                 if(monster[i] != null){
                     if(monster[i].alive && !monster[i].dying) {
-                        monster[i].update();
+                        monster[i].update(); //Updates Monster Index if index is not null
                     }else if(!monster[i].alive){
                         killCount++;
                         System.out.print("Kill Count: " + killCount);
-                        monster[i] = null;
+                        monster[i] = null; //Removes monster index from game
                     }
                 }
             }
         }
         if(gameState == pauseState){
-
+            //PAUSE STATE (Release by pressing 'P' again)
         }
         if(killCount == 50){
+            //Finishes game once killCount condition is met
             gameState = endGameState;
             stopMusic();
         }
     }
-    // 2. Create the Retry Method (Resets Game)
+    // 2. Retry Method for Death Instance
     public void retry() {
 
+        //Resets player status and position
         player.setDefaultPositions();
         player.restoreStatus();
 
@@ -182,14 +185,16 @@ public class GamePanel extends JPanel implements Runnable {
     // Create the Restart/Quit Method (Goes to Title)
     public void restart() {
 
+        //Reset Player Position and Attributes
         player.setDefaultPositions();
         player.restoreStatus();
 
+        //Resets killCount
         killCount = 0;
         ui.gameFinished = false;
         ui.commandNum = 0;
 
-        // Reset assets so game is fresh
+        // Reset assets
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
@@ -273,6 +278,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void playMusic(int i){
+        //Method for Playing Music
         music.setFile(i);
         music.play();
         music.loop();
@@ -281,9 +287,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void stopMusic(){
         music.stop();
-    }
+    } //Method for Stopping Music
 
     public void playSE(int i){
+        //Method for Playing Sound FX
         se.setFile(i);
         se.play();
     }
