@@ -24,6 +24,8 @@ Members and Contributions:
 
 Tools and Assistance:
 
+IDE Used: IntelliJ Community Version
+
 AI Assistance: 
   Gemini Pro - Used for Hardcore Debugging and Assisted in UI creation
   Deepseek - Used for Hardcore Debugging
