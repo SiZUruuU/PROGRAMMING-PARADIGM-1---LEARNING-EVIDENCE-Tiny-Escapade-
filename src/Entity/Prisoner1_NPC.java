@@ -11,8 +11,7 @@ public class Prisoner1_NPC extends Entity{
     public Prisoner1_NPC(GamePanel gp){
         super(gp);
 
-        int plus = 0;
-        plus++;
+        name = "Prisoner";
 
         solidArea = new Rectangle(14,30,20, 15);
         solidAreaDefaultX = solidArea.x;

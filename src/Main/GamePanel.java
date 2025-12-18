@@ -1,5 +1,6 @@
 package Main;
 
+import Data.SaveLoad;
 import Entity.Entity;
 import Entity.Player;
 import Tile.TileManager;
@@ -39,13 +40,16 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
+    SaveLoad saveLoad = new SaveLoad(this);
+    public EntityGenerator eGenerator = new EntityGenerator(this);
 
     //ENTITY AND OBJECT
     public Player player = new Player(this,keyH);
-    public Entity obj[] = new Entity[20];
-    public Entity npc[] = new Entity[20];
-    public Entity monster[] = new Entity[10];
+    public Entity obj[] = new Entity[100];
+    public Entity npc[] = new Entity[100];
+    public Entity monster[] = new Entity[100];
     ArrayList<Entity> entityList = new ArrayList<>();
+    public int killCount = 49;
 
     //GAME STATE
     public int gameState;
@@ -54,6 +58,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int playState = 2;
     public final int pauseState = 3;
     public final int dialogueState = 4;
+    public final int gameOverState = 5;
+    public final int endGameState = 6;
 
     //GUIDE STATE PAGES
     public int guidePage = 0;
@@ -141,15 +147,57 @@ public class GamePanel extends JPanel implements Runnable {
             }
             for(int i=0; i < monster.length; i++){
                 if(monster[i] != null){
-                    monster[i].update();
+                    if(monster[i].alive && !monster[i].dying) {
+                        monster[i].update();
+                    }else if(!monster[i].alive){
+                        killCount++;
+                        System.out.print("Kill Count: " + killCount);
+                        monster[i] = null;
+                    }
                 }
             }
         }
         if(gameState == pauseState){
 
         }
-
+        if(killCount == 50){
+            gameState = endGameState;
+            stopMusic();
+            playMusic(18);
+        }
     }
+    // 2. Create the Retry Method (Resets Game)
+    public void retry() {
+
+        player.setDefaultPositions();
+        player.restoreStatus();
+
+        // Reset the map assets (Respawns monsters and puts items back)
+        aSetter.setObject();
+        aSetter.setNPC();
+        aSetter.setMonster();
+
+        gameState = playState; // Go back to playing
+    }
+
+    // Create the Restart/Quit Method (Goes to Title)
+    public void restart() {
+
+        player.setDefaultPositions();
+        player.restoreStatus();
+
+        killCount = 0;
+        ui.gameFinished = false;
+        ui.commandNum = 0;
+
+        // Reset assets so game is fresh
+        aSetter.setObject();
+        aSetter.setNPC();
+        aSetter.setMonster();
+
+        gameState = titleState; // Go back to Title Screen
+    }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
@@ -161,7 +209,6 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         //TITLE SCREEN
-
         if(gameState == titleState){
             ui.draw(g2);
         }else{

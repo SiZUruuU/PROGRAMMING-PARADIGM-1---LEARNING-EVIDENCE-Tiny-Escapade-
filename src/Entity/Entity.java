@@ -16,6 +16,17 @@ public class Entity {
     public int worldX, worldY;
     public int solidAreaDefaultX;
     public int solidAreaDefaultY;
+    public boolean keySpawned = false;
+    public boolean finalStage = false;
+
+    //KeyHolder NPC State
+    public boolean enoughOrb = false;
+    public boolean enoughSoul = false;
+    public boolean enoughKey = false;
+    public boolean completeProgress = false;
+
+    //Final NPC
+    public int talkCount = 1;
 
     //Player State
     public int normalSpeed;
@@ -25,8 +36,10 @@ public class Entity {
     public int staminaRegenCount = 0;
     boolean sprint = false;
     boolean attacking = false;
-    boolean alive = true;
-    boolean dying = false;
+    public boolean alive = true;
+    public boolean dying = false;
+    public String currentFloatingText = "";
+    public boolean floatingTextOn = false;
 
     //Entity Animation Variables
     public String direction = "down";
@@ -39,8 +52,13 @@ public class Entity {
     public int actionLockCounter;
     int dialogueIndex = 0;
     int dyingCounter = 0;
+    int dialogueCount = 0;
+    public int healRequirement = 1;
+    public int dialogueInterval = 0;
+    public int floatingTextTimer = 0;
 
     //Entity Buffered Images
+    public BufferedImage still;
     public BufferedImage left1, left2, left3, left4, left5, left6;
     public BufferedImage right1, right2, right3, right4, right5, right6;
     public BufferedImage up1, up2, up3, up4, up5, up6;
@@ -52,12 +70,13 @@ public class Entity {
     public BufferedImage image;
     public BufferedImage image1, image2, image3, image4, image5, image6;
 
+    //Extra Variables
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,10,0,0);
     public boolean collisionOn = false;
     public boolean invincible = false;
     String dialogues[] = new String[20];
-
+    String randomPlayerDialogues[] = new String[10];
     public String name;
     public boolean collision = false;
     public int type; //0 - player, 1 - npc, 2 - monster
@@ -96,8 +115,10 @@ public class Entity {
             case "right":
                 direction = "left";
                 break;
+            case "still":
+                direction = "still";
+                break;
         }
-
     }
 
     public void update() {
@@ -134,6 +155,8 @@ public class Entity {
                     break;
                 case "right":
                     worldX += normalSpeed;
+                    break;
+                case "still":
                     break;
             }
         }
@@ -174,6 +197,11 @@ public class Entity {
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
 
             switch (direction) {
+
+                case "still":
+                    image = still;
+                    break;
+
                 case "left":
                     if (spriteNum == 1) {image = left1;}
                     if (spriteNum == 2) {image = left2;}
@@ -236,7 +264,10 @@ public class Entity {
 
         if(dyingCounter <= 5){changeAlpha(g2, 0f);}
         if(dyingCounter > 5 && dyingCounter <= 10){changeAlpha(g2, 1f);}
-        if(dyingCounter > 10 && dyingCounter <= 15){changeAlpha(g2, 0f);}
+        if(dyingCounter > 10 && dyingCounter <= 15){
+            changeAlpha(g2, 0f);
+            gp.playSE(11);
+        }
         if(dyingCounter > 15 && dyingCounter <= 20){changeAlpha(g2, 1f);}
         if(dyingCounter > 20 && dyingCounter <= 25){changeAlpha(g2, 0f);}
         if(dyingCounter > 25 && dyingCounter <= 30){changeAlpha(g2, 1f);}
@@ -246,7 +277,6 @@ public class Entity {
             dying = false;
             alive = false;
         }
-
     }
 
     public void changeAlpha(Graphics2D g2, float alphaValue){

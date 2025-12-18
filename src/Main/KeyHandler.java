@@ -26,40 +26,41 @@ public class KeyHandler implements KeyListener{
         int code = e.getKeyCode();
 
         //TITLE STATE
-        if(gp.gameState == gp.titleState){
+        if (gp.gameState == gp.titleState) {
             if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
-                    if(gp.ui.commandNum < 0){
-                        gp.ui.commandNum = 2;
-                    }
+                if (gp.ui.commandNum < 0) {
+                    gp.ui.commandNum = 2;
+                }
             }
 
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
-                    if(gp.ui.commandNum > 2){
-                        gp.ui.commandNum = 0;
-                    }
+                if (gp.ui.commandNum > 2) {
+                    gp.ui.commandNum = 0;
+                }
             }
-            if(code == KeyEvent.VK_ENTER){
-                if(gp.ui.commandNum == 0){
+            if (code == KeyEvent.VK_ENTER) {
+                if (gp.ui.commandNum == 0) {
                     gp.gameState = gp.guideState;
                     gp.guideTimer = 0;
                     gp.guidePage = 0;
                 }
-                if(gp.ui.commandNum == 1){
-
+                if (gp.ui.commandNum == 1) {
+                    gp.saveLoad.load();
+                    gp.gameState = gp.playState;
+                    gp.playMusic(2);
                 }
-                if(gp.ui.commandNum == 2){
+                if (gp.ui.commandNum == 2) {
                     System.exit(0);
                 }
 
             }
-        }
-        else if (gp.gameState == gp.guideState) {
+        } else if (gp.gameState == gp.guideState) {
 
             if (code == KeyEvent.VK_ENTER) {
 
-                if(gp.guideTimer > 180) {
+                if (gp.guideTimer > 180) {
 
                     if (gp.guidePage == 0) {
                         gp.guidePage = 1;
@@ -76,7 +77,7 @@ public class KeyHandler implements KeyListener{
         }
 
         //PLAY STATE
-        if(gp.gameState == gp.playState) {
+        if (gp.gameState == gp.playState) {
             if (code == KeyEvent.VK_W) {
                 upPressed = true;
             }
@@ -111,7 +112,7 @@ public class KeyHandler implements KeyListener{
         }
 
         //PAUSE STATE
-        else if(gp.gameState == gp.pauseState){
+        else if (gp.gameState == gp.pauseState) {
 
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
@@ -119,11 +120,78 @@ public class KeyHandler implements KeyListener{
         }
 
         //DIALOGUE STATE
-        else if(gp.gameState == gp.dialogueState){
-            if(code == KeyEvent.VK_E){
-                gp.gameState = gp.playState;
-            }
+        else if (gp.gameState == gp.dialogueState) {
+            if (code == KeyEvent.VK_E || code == KeyEvent.VK_ENTER) { // Added ENTER as an option too
 
+                // 1. Close the dialogue window
+                gp.gameState = gp.playState;
+
+                // 2. Check if we just finished the specific dialogue stage
+                if (gp.player.talkCount == 2) {
+
+                    // 3. Trigger the UI Message
+                    gp.ui.showMessage("THE TRIAL HAS BEGUN");
+
+                    // 4. Increment count so the message doesn't appear again next time
+                    gp.player.talkCount++;
+                }
+            }
+        }
+
+        else if (gp.gameState == gp.gameOverState || gp.gameState == gp.endGameState) {
+            gameOverState(code);
+        }
+    }
+
+    public void gameOverState(int code) {
+
+        // Navigate Up
+        if (code == KeyEvent.VK_W) {
+            gp.ui.commandNum--;
+            if (gp.ui.commandNum < 0) {
+                // If we are winning, we only have 1 option (Back to title), so reset to 0
+                // If we are losing, we have 2 options, reset to 1
+                if(gp.gameState == gp.endGameState) {
+                    gp.ui.commandNum = 0;
+                } else {
+                    gp.ui.commandNum = 1;
+                }
+            }
+        }
+
+        // Navigate Down
+        if (code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+
+            if(gp.gameState == gp.endGameState) {
+                // Only 1 option in win screen, keep it at 0
+                gp.ui.commandNum = 0;
+            } else {
+                // 2 options in lose screen
+                if (gp.ui.commandNum > 1) {
+                    gp.ui.commandNum = 0;
+                }
+            }
+        }
+
+        // Select Option
+        if (code == KeyEvent.VK_ENTER) {
+
+            if (gp.gameState == gp.endGameState) {
+                // WIN LOGIC: Go back to title
+                if (gp.ui.commandNum == 0) {
+                    gp.gameState = gp.titleState;
+                    gp.restart(); // Reset player HP/Pos for next game
+                }
+            }
+            else {
+                // LOSE LOGIC
+                if (gp.ui.commandNum == 0) {
+                    gp.retry();
+                } else if (gp.ui.commandNum == 1) {
+                    gp.restart(); // Quit to title
+                }
+            }
         }
     }
 

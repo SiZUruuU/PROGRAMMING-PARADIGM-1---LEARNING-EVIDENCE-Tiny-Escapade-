@@ -38,10 +38,12 @@ public class EventHandler {
 
         if(canTouchEvent) {
             // We pass the col/row (20, 23) into damagePit so we can remember location
-            if(hit(45, 44, "any")){ damagePit(20, 23, gp.dialogueState); }
-            if(hit(41, 45, "any")){ damagePit(20, 23, gp.dialogueState); }
-        }
+            if(hit(45, 44, "any")){damagePit(45, 44, gp.dialogueState); }
+            if(hit(41, 45, "any")){damagePit(41, 45, gp.dialogueState); }
+            if(hit(25, 43, "any")){HealingWisp(25,43, gp.dialogueState);}
+            if(hit(25, 15, "any")){HealingWisp(25,43, gp.dialogueState);}
 
+        }
     }
 
     public boolean hit(int eventCol, int eventRow, String reqDirection){
@@ -66,8 +68,6 @@ public class EventHandler {
         gp.player.solidArea.y = gp.player.solidAreaDefaultY;
         eventRect.x = eventRectDefaultX;
         eventRect.y = eventRectDefaultY;
-
-
         return hit;
     }
 
@@ -88,19 +88,38 @@ public class EventHandler {
             encounterCount++;
             System.out.println("Encounter Count: " + encounterCount);
         }
-
-
-
-
-        // Disable touch so it doesn't happen again immediately
         canTouchEvent = false;
     }
+
+    public void HealingWisp(int col, int row, int gameState){
+
+        eventRectDefaultX = eventRect.x;
+        eventRectDefaultY = eventRect.y;
+
+            gp.gameState = gameState;
+            if(gp.killCount >= gp.player.healRequirement){
+                gp.ui.currentDialogue = "The wisp grants you the aid you deserve." + "\n(Your progress has been saved!)";
+                if(gp.player.life >= 3) {gp.player.life = 5;}
+                else if(gp.player.life < 3){gp.player.life += 2;}
+                if(gp.player.healRequirement > 50){
+                    gp.player.healRequirement = 50;
+                }
+                else{
+                    gp.player.healRequirement++;
+                }
+            }else if(gp.killCount < gp.player.healRequirement){
+                gp.ui.currentDialogue = "You are not deserving of aid." + "\n(Your Progress has been saved!)";
+            }
+            gp.saveLoad.save();
+            canTouchEvent = false;
+        }
+
     public void draw(Graphics2D g2) {
 
         g2.setColor(Color.MAGENTA);
 
-        int eventCol = 41;
-        int eventRow = 45;
+        int eventCol = 25;
+        int eventRow = 43;
 
         // Calculate the position relative to the screen (same math as tiles)
         int worldX = eventCol * gp.tileSize + eventRectDefaultX;

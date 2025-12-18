@@ -123,12 +123,12 @@ public class TileManager {
         setUp(71, "71", false,false,0, 0, 16, 16);
         setUp(72, "72", false,false,0, 0, 16, 16);
         setUp(73, "73", false,false,0, 0, 16, 16);
-        setUp(74, "74", false,false,0, 0, 16, 16);
+        setUp(74, "74", false,false,0, 0, 48, 48);
         setUp(75, "75", true,true,0, 0, 48, 48);
-        setUp(76, "76", true,true,0, 0, 16, 16);
+        setUp(76, "76", true,true,0, 0, 48, 48);
         setUp(77, "77", true,true,0, 0, 48, 48);
         setUp(78, "78", true,true,0, 0, 48, 48);
-        setUp(79, "79", true,true,0, 0, 16, 16);
+        setUp(79, "79", true,true,0, 0, 48, 48);
     }
     public void setUp(int index, String imageName, boolean collision, boolean front, int x, int y, int width, int height){
 

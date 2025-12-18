@@ -4,6 +4,7 @@ import Entity.Entity;
 import Objects.objHealthBar;
 import Objects.objStaminaBar;
 
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -82,6 +83,8 @@ public class UI {
             drawPlayerLife();
             drawPlayerStaminaBar(g2);
             drawStaminaBar();
+            drawMessage();
+            drawPlayerFloatingText();
         }
 
         //PAUSE STATE
@@ -98,7 +101,72 @@ public class UI {
             drawStaminaBar();
             drawDialogueScreen();
         }
+        //GAME OVER STATE
+        if(gp.gameState == gp.gameOverState || gp.gameState == gp.endGameState){
+            drawGameOverScreen();
+        }
+    }
+    public void drawGameOverScreen(){
 
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0,0,gp.screenWidth, gp.screenHeight);
+
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80F));
+
+        if (gp.gameState == gp.endGameState) {
+            // === WINNING SCREEN ===
+
+            text = "TRIAL COMPLETE";
+            g2.setColor(Color.black); // Shadow
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 4;
+            g2.drawString(text, x, y);
+
+            g2.setColor(Color.yellow); // Main Color
+            g2.drawString(text, x-4, y-4);
+
+            // Win Menu Options
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Back to Title";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 6;
+            g2.drawString(text, x, y);
+            if(commandNum == 0){
+                g2.drawString(">>", x-40, y);
+            }
+        }
+        else {
+
+            text = "GAME OVER";
+            g2.setColor(Color.black); // Shadow
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 4;
+            g2.drawString(text, x, y);
+
+            g2.setColor(Color.white); // Main Color
+            g2.drawString(text, x-4, y-4);
+
+            // Lose Menu Options
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Retry";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 6;
+            g2.drawString(text, x, y);
+            if(commandNum == 0){
+                g2.drawString(">>", x-40, y);
+            }
+
+            text = "Quit";
+            x = getXforCenteredText(text);
+            y = gp.tileSize * 7;
+            g2.drawString(text, x, y);
+            if(commandNum == 1){
+                g2.drawString(">>", x-40, y);
+            }
+        }
     }
 
     public void drawPlayerLife(){
@@ -125,6 +193,53 @@ public class UI {
             case 1:
                 g2.drawImage(healthBar5, x, y, null);
                 break;
+        }
+    }
+
+    public void drawMessage() {
+        if (messageOn) {
+
+            messageCounter++;
+            int alpha = 0;
+
+            if (messageCounter <= 30) {
+
+                alpha = messageCounter * (255 / 30);
+            }
+
+            else if (messageCounter > 30 && messageCounter <= 180) {alpha = 255;}
+
+            else if (messageCounter > 180 && messageCounter <= 210) {
+                int progress = messageCounter - 180;
+                alpha = 255 - (progress * (255 / 30));
+            }
+
+            else {
+                messageCounter = 0;
+
+                if (message.equals("THE TRIAL HAS BEGUN")) {
+
+                    message = "Kill All Ghosts!";
+                    messageCounter = -60;
+                    messageOn = true;
+                }
+                else {
+                    messageOn = false;
+                }
+            }
+
+            if (alpha < 0) alpha = 0;
+            if (alpha > 255) alpha = 255;
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30F));
+            int x = getXforCenteredText(message);
+            int y = gp.tileSize * 5;
+
+            g2.setColor(new Color(0, 0, 0, alpha));
+            g2.drawString(message, x + 2, y + 2);
+
+            g2.setColor(new Color(255, 255, 255, alpha));
+            g2.drawString(message, x, y);
         }
     }
 
@@ -305,6 +420,28 @@ public class UI {
         }
     }
 
+    public void drawPlayerFloatingText() {
+
+        if (gp.player.floatingTextOn) {
+
+            String text = gp.player.currentFloatingText;
+
+            // 1. Calculate Position (Above and slightly right of player)
+            // Adjust these numbers based on your sprite size
+            int x = getXforCenteredText(text) - 10;
+            int y = gp.player.screenY + 9;
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 11F));
+
+            // 3. Draw Text Shadow
+            g2.setColor(Color.black);
+            g2.drawString(text, x + 1, y + 1);
+
+            // 4. Draw Main Text
+            g2.setColor(Color.white);
+            g2.drawString(text, x, y);
+        }
+    }
 
     public void drawPauseScreen(){
 
@@ -393,5 +530,5 @@ public class UI {
         return x;
 
     }
-    }
+}
 

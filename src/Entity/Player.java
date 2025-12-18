@@ -27,12 +27,13 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
         getPlayerAtk();
+        setRandomDialogue();
 
         solidArea = new Rectangle(14, 30, 20, 15);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        attackArea.width = 40;
+        attackArea.width = 60;
         attackArea.height = 40;
 
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
@@ -104,6 +105,8 @@ public class Player extends Entity {
 
 
     public void update() {
+
+        handleRandomDialogue();
 
         boolean isMoving = false;
 
@@ -227,6 +230,9 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
         }
+        if(life <= 0){
+            gp.gameState = gp.gameOverState;
+        }
     }
 
     public void attacking() {
@@ -330,6 +336,42 @@ public class Player extends Entity {
 
         }
     }
+    public void handleRandomDialogue() {
+
+        // 1. TIMER LOGIC (Same as before)
+        if (floatingTextOn) {
+            floatingTextTimer++;
+            if (floatingTextTimer > 180) {
+                floatingTextOn = false;
+                floatingTextTimer = 0;
+            }
+        } else {
+            dialogueInterval++;
+
+            // Trigger every 10 seconds (600 frames)
+            if (dialogueInterval > 600) {
+
+                // --- PRIORITY CHECKS (Conditions) ---
+
+                // Condition 1: Low Health (Less than 2 hearts)
+                if (life <= 2) {
+                    currentFloatingText = randomPlayerDialogues[6]; // "I'm dying..."
+                }
+                // Condition 2: Low Stamina (Less than 20)
+                else if (stamina < 20) {
+                    // You didn't make a specific one, but you could use index 1 or 8
+                    currentFloatingText = randomPlayerDialogues[1]; // "I need to get stronger."
+                }
+                // --- GENERIC RANDOM (If no conditions are met) ---
+                else {
+                    pickGenericDialogue();
+                }
+                floatingTextOn = true;
+                gp.playSE(15);
+                dialogueInterval = 0;
+            }
+        }
+    }
 
     public void pickUpObject(int i) {
 
@@ -343,6 +385,7 @@ public class Player extends Entity {
                     if (orbCount < 3) {
 
                     } else {
+                        gp.playSE(16);
                         hasKey++;
                         gp.obj[i] = null;
                         System.out.print("Key" + hasKey);
@@ -350,26 +393,31 @@ public class Player extends Entity {
                     break;
                 case "Door":
                     if (hasKey > 0) {
+                        gp.playSE(17);
                         gp.obj[i] = null;
-                        hasKey--;
                     }
                     break;
                 case "Orb":
                     gp.playSE(5);
                     gp.obj[i] = null;
                     orbCount++;
+                    System.out.println("Orb Count: " + orbCount);
                     break;
-            }
 
+                case "Final Door":
+                    if(hasKey == 4){
+                        gp.playSE(17);
+                        gp.obj[i] = null;
+                        finalStage = true;
+                    }
+            }
         }
     }
 
     public void interactNPC(int i) {
 
         if (gp.keyH.eKeyPressed) {
-
             if (gp.keyH.eKeyPressed) {
-
                 if (i != 999) {
 
                     // 1. Dialogue Branch
@@ -405,7 +453,6 @@ public class Player extends Entity {
                         case 3:
                             gp.playSE(10);
                             break;
-
                     }
                     life -= 1;
                 } else {
@@ -419,7 +466,20 @@ public class Player extends Entity {
 
         if (i != 999) {
             if(!gp.monster[i].invincible){
-                gp.playSE(6);
+                Random random = new Random();
+                int j = random.nextInt(3) + 1;
+                switch(j){
+                    case 1:
+                        gp.playSE(6);
+                        break;
+                    case 2:
+                        gp.playSE(12);
+                        break;
+                    case 3:
+                        gp.playSE(13);
+                        break;
+
+                }
                 gp.monster[i].life -= 1;
                 gp.monster[i].invincible = true;
 
@@ -431,10 +491,56 @@ public class Player extends Entity {
             gp.playSE(7);
         }
     }
+    public void restoreStatus() {
+        life = maxLife;
+        invincible = false;
+
+        // Reset your specific quest variables
+        orbCount = 0;
+        hasKey = 0;
+        enoughOrb = false;
+        enoughKey = false;
+        enoughSoul = false;
+        completeProgress = false;
+
+        attacking = false;
+    }
+
+    // 3. Create Default Position method (if you don't have one)
+    public void setDefaultPositions() {
+        worldX = gp.tileSize * 48;
+        worldY = gp.tileSize * 43;
+        direction = "down";
+    }
+
+    public void setRandomDialogue() {
+
+        randomPlayerDialogues[0] = "It's cold in here.";
+        randomPlayerDialogues[1] = "I need to get stronger.";
+        randomPlayerDialogues[2] = "The anomaly is growing.";
+        randomPlayerDialogues[3] = "...";
+        randomPlayerDialogues[4] = "Poor souls.";
+        randomPlayerDialogues[5] = "Such innocent creatures. It's a shame\nmy soul rejects them.";
+        randomPlayerDialogues[6] = "I'm dying...";
+        randomPlayerDialogues[7] = "I should keep exploring.";
+        randomPlayerDialogues[8] = "Such a tedious task.";
+
+    }
+
+    public void pickGenericDialogue() {
+
+        int[] safeIndices = {0, 3, 4, 5, 7, 8};
+
+        // Pick a random number from 0 to the length of safeIndices
+        int i = new Random().nextInt(safeIndices.length);
+        // Get the actual dialogue index
+        int selectedIndex = safeIndices[i];
+
+        currentFloatingText = randomPlayerDialogues[selectedIndex];
+    }
+
 
     public void draw(Graphics2D g2) {
-//        g2.setColor(Color.white);
-//        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
 
         BufferedImage image = null;
         if (!sprint) {
@@ -589,7 +695,6 @@ public class Player extends Entity {
                             image = atkleft6;
                         }
                     }
-
                     break;
             }
         }
