@@ -6,9 +6,219 @@
   <component name="ChangeListManager">
     <list default="true" id="8c2caa29-d47c-488f-87cd-96e3336cec3e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save.dat" beforeDir="false" afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Days Break.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Days Break.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Ghost/left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Ghost/right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/final npc/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/final npc/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/font/Purisa Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/font/x12y16pxMaruMonica.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/healing wis/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/energy bar 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/energy bar 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/hp/energy bar 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/map1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/newmap.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/newmap2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/worldmap1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/monkey/download (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/65.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/66.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/67.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/68.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/69.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/70.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/71.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/73.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/74.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/75.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/76.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/77.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/78.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/79.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/newtiles/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/Dude_Monster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/left0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/left1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/left2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/left3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/left4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/left5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/right0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/right1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/right2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/right3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/right4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/npc/right5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/objects/chest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/objects/chest_opened.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/objects/door.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/objects/key.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/orb/orb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0left1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0left2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0left3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0left4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0left5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack0left6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/attack5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/left0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/left1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/left2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/left3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/left4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/left5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/leftrun0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/leftrun1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/leftrun2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/leftrun3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/leftrun4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/leftrun5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/right0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/right1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/right2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/right3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/right4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/right5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/rightrun0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/rightrun1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/rightrun2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/rightrun3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/rightrun4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player/rightrun5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/2nd punch sfx.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/3rd punch.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/BUBBLE POP SOUND EFFECT - FREE.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Ding Sound Effect 4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Dungeon Ambience.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Grumpy Old Man.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Man grunting sound effect.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Mouse Squeaking.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Orb Sound Effect.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Punch Sound Effect _ No Copyright _ Free Download 4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Through Dark Gardens.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/Victory.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/We Are Charlie Kirk Full Song Lyrics.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/damage 1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/damage 2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/damage 3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/door opening .wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/ghost death sfx.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/jingling keys.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/miss punch sfx.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sound/punch sfx.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/dark tree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/grasses9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/tree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +273,7 @@
       <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\res\monkey" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\src" />
       <recent name="C:\Users\Josh Ihalas\Documents\IntelliJ CE Projects\Days Break\res\maps" />
     </key>
   </component>

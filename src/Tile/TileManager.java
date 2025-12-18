@@ -136,7 +136,7 @@ public class TileManager {
 
         try{
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/newtiles/" + imageName + ".png"));
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/newtiles/" + imageName + ".png"));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
 
@@ -162,7 +162,7 @@ public class TileManager {
 
         try{
 
-            InputStream is = getClass().getResourceAsStream("/maps/newmap2.txt");
+            InputStream is = getClass().getResourceAsStream("/res/maps/newmap2.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;

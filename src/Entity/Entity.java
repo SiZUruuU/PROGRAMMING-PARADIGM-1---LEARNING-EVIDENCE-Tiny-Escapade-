@@ -292,7 +292,7 @@ public class Entity {
 
         try{
 
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res" + imagePath + ".png"));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
         }catch(IOException e){
@@ -307,7 +307,7 @@ public class Entity {
         BufferedImage image = null;
 
         try{
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res/" + imagePath + ".png"));
             image = uTool.scaleImage(image, width, height);
 
         }catch(IOException e){

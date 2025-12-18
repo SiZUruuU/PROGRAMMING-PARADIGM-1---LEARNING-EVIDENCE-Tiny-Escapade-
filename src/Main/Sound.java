@@ -12,25 +12,25 @@ public class Sound {
 
     public Sound(){
 
-        soundURL[0] = getClass().getResource("/sound/Through Dark Gardens.wav");
-        soundURL[1] = getClass().getResource("/sound/We Are Charlie Kirk Full Song Lyrics.wav");
-        soundURL[2] = getClass().getResource("/sound/Dungeon Ambience.wav");
-        soundURL[3] = getClass().getResource("/sound/Mouse Squeaking.wav");
-        soundURL[4] = getClass().getResource("/sound/Grumpy Old Man.wav");
-        soundURL[5] = getClass().getResource("/sound/Orb Sound Effect.wav");
-        soundURL[6] = getClass().getResource("/sound/punch sfx.wav");
-        soundURL[7] = getClass().getResource("/sound/miss punch sfx.wav");
-        soundURL[8] = getClass().getResource("/sound/damage 1.wav");
-        soundURL[9] = getClass().getResource("/sound/damage 2.wav");
-        soundURL[10] = getClass().getResource("/sound/damage 3.wav");
-        soundURL[11] = getClass().getResource("/sound/ghost death sfx.wav");
-        soundURL[12] = getClass().getResource("/sound/2nd punch sfx.wav");
-        soundURL[13] = getClass().getResource("/sound/3rd punch.wav");
-        soundURL[14] = getClass().getResource("/sound/damage 3.wav");
-        soundURL[15] = getClass().getResource("/sound/BUBBLE POP SOUND EFFECT - FREE.wav");
-        soundURL[16] = getClass().getResource("/sound/jingling keys.wav");
-        soundURL[17] = getClass().getResource("/sound/door opening.wav");
-        soundURL[18] = getClass().getResource("/sound/Victory.wav");
+        soundURL[0] = getClass().getResource("/res/sound/Through Dark Gardens.wav");
+        soundURL[1] = getClass().getResource("/res/sound/We Are Charlie Kirk Full Song Lyrics.wav");
+        soundURL[2] = getClass().getResource("/res/sound/Dungeon Ambience.wav");
+        soundURL[3] = getClass().getResource("/res/sound/Mouse Squeaking.wav");
+        soundURL[4] = getClass().getResource("/res/sound/Grumpy Old Man.wav");
+        soundURL[5] = getClass().getResource("/res/sound/Orb Sound Effect.wav");
+        soundURL[6] = getClass().getResource("/res/sound/punch sfx.wav");
+        soundURL[7] = getClass().getResource("/res/sound/miss punch sfx.wav");
+        soundURL[8] = getClass().getResource("/res/sound/damage 1.wav");
+        soundURL[9] = getClass().getResource("/res/sound/damage 2.wav");
+        soundURL[10] = getClass().getResource("/res/sound/damage 3.wav");
+        soundURL[11] = getClass().getResource("/res/sound/ghost death sfx.wav");
+        soundURL[12] = getClass().getResource("/res/sound/2nd punch sfx.wav");
+        soundURL[13] = getClass().getResource("/res/sound/3rd punch.wav");
+        soundURL[14] = getClass().getResource("/res/sound/damage 3.wav");
+        soundURL[15] = getClass().getResource("/res/sound/BUBBLE POP SOUND EFFECT - FREE.wav");
+        soundURL[16] = getClass().getResource("/res/sound/jingling keys.wav");
+        soundURL[17] = getClass().getResource("/res/sound/door opening.wav");
+        soundURL[18] = getClass().getResource("/res/sound/Victory.wav");
 
     }
 
